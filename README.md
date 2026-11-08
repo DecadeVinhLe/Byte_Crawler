@@ -1,7 +1,7 @@
 # ByteCrawler
 </break>
 <p align="center">
-  <img src="assets/image/images.jpg" alt="Alt Text" width="600" />
+  <img src="../assets/images/images.jpg" alt="Alt Text" width="600" />
 </p>
 Image from: Adobe Stock
 </break>
