@@ -270,14 +270,15 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
 @media(max-width:1020px){.rd{grid-template-columns:200px minmax(0,1fr)}.rd-right{grid-column:1/-1;position:static;grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.rd{grid-template-columns:1fr}.rd-side,.rd-right{position:static;grid-template-columns:1fr}}
 
-/* Home: contact band (lime green) */
-.lime-contact{position:relative;background:#b8f032 radial-gradient(rgba(20,20,43,.13) 1.3px,transparent 1.4px) 0 0/14px 14px;color:var(--ink);padding:72px 0;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
+/* Home: contact band (lime green text on dark) */
+.lime-contact{position:relative;background:#14142b radial-gradient(rgba(95,106,240,.22) 1.3px,transparent 1.4px) 0 0/14px 14px;color:#b8f032;padding:72px 0;border-top:4px solid #5f6af0;border-bottom:4px solid #5f6af0}
 .lc-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.lime-contact h2{font-size:clamp(28px,5vw,46px);color:var(--ink);text-shadow:3px 3px 0 rgba(255,255,255,.55)}
-.lime-contact p{margin-top:14px;max-width:420px;color:#1d2a05}
+.lime-contact h2{font-size:clamp(28px,5vw,46px);color:#b8f032;text-shadow:3px 3px 0 #3b46e0}
+.lime-contact p{margin-top:14px;max-width:420px;color:#b8f032}
 .lime-contact form{margin-top:0;max-width:none}
-.lime-contact label{color:var(--ink)}
-.lime-contact input,.lime-contact textarea{background:#f6ffd9;color:var(--ink);border:3px solid var(--ink)}
-.lime-contact input:focus,.lime-contact textarea:focus{outline:3px solid var(--ink);outline-offset:2px}
-.lime-contact .ok{color:var(--ink)}
+.lime-contact label{color:#b8f032}
+.lime-contact input,.lime-contact textarea{background:#0e0e24;color:#b8f032;border:3px solid #b8f032}
+.lime-contact input::placeholder,.lime-contact textarea::placeholder{color:rgba(184,240,50,.5)}
+.lime-contact input:focus,.lime-contact textarea:focus{outline:3px solid #5f6af0;outline-offset:2px}
+.lime-contact .ok{color:#b8f032}
 @media(max-width:860px){.lc-in{grid-template-columns:1fr;gap:24px}.lime-contact{padding:52px 0}}
