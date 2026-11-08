@@ -152,7 +152,7 @@ code{font-family:var(--mono);background:rgba(95,106,240,.18);padding:1px 5px}
 
 .ahero img.drb{inset:auto;right:5%;bottom:0;left:auto;top:auto;width:auto;height:88%;z-index:3;opacity:1;object-fit:contain}
 .ahero.bb .in{text-align:left;margin-left:max(24px,8%);max-width:520px}
-.mtabs{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}.mtabs button{font:700 13px var(--mono);color:var(--tx);background:var(--card);border:3px solid var(--line);padding:8px 14px;cursor:pointer}.mtabs button.on{background:var(--bar);color:#fff;box-shadow:3px 3px 0 var(--line)}
+
 .door{position:absolute;transform:translate(-50%,-50%);width:clamp(38px,6vw,66px);background:none;border:0;padding:0;cursor:pointer;line-height:0}.door svg{width:100%;height:auto;filter:drop-shadow(3px 3px 0 #000)}
 .door span{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:4px;font:700 10px var(--mono);background:var(--ink);color:#fff;padding:2px 6px;white-space:nowrap;line-height:1.3}
 .door.op svg{animation:dg 1s steps(2) infinite}.door.op span{background:#d62839}@keyframes dg{50%{filter:drop-shadow(0 0 10px #ff7a2f)}}
@@ -269,3 +269,15 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
 .rd-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 13px var(--mono);padding:10px 16px;border:2px solid var(--bar);z-index:90;opacity:0;pointer-events:none;transition:opacity .15s}.rd-toast.on{opacity:1}
 @media(max-width:1020px){.rd{grid-template-columns:200px minmax(0,1fr)}.rd-right{grid-column:1/-1;position:static;grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.rd{grid-template-columns:1fr}.rd-side,.rd-right{position:static;grid-template-columns:1fr}}
+
+/* Home: contact band (lime green) */
+.lime-contact{position:relative;background:#b8f032 radial-gradient(rgba(20,20,43,.13) 1.3px,transparent 1.4px) 0 0/14px 14px;color:var(--ink);padding:72px 0;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)}
+.lc-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.lime-contact h2{font-size:clamp(28px,5vw,46px);color:var(--ink);text-shadow:3px 3px 0 rgba(255,255,255,.55)}
+.lime-contact p{margin-top:14px;max-width:420px;color:#1d2a05}
+.lime-contact form{margin-top:0;max-width:none}
+.lime-contact label{color:var(--ink)}
+.lime-contact input,.lime-contact textarea{background:#f6ffd9;color:var(--ink);border:3px solid var(--ink)}
+.lime-contact input:focus,.lime-contact textarea:focus{outline:3px solid var(--ink);outline-offset:2px}
+.lime-contact .ok{color:var(--ink)}
+@media(max-width:860px){.lc-in{grid-template-columns:1fr;gap:24px}.lime-contact{padding:52px 0}}

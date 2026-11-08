@@ -15,7 +15,7 @@ bytecrawler/
 │   └── community.js      # Reddit-style community tab
 ├── assets/
 │   ├── favicon.svg
-│   └── images/           # maps, heroes, boss, backgrounds
+│   └── images/           # map, heroes, boss, backgrounds
 ├── .nojekyll             # tells GitHub Pages to serve files as-is
 ├── .gitignore
 └── README.md

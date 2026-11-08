@@ -12,4 +12,5 @@ document.addEventListener("click",function(e){if(!jm.contains(e.target))js(false
 document.addEventListener("keydown",function(e){if(e.key=="Escape"){js(false);jb.focus()}});
 document.querySelectorAll(".menu a,.nav>li>a").forEach(function(a){a.addEventListener("click",function(){js(false);nv.classList.remove("open")})});
 $("cf").onsubmit=function(e){e.preventDefault();$("ok").textContent="Quest accepted! We’ll reply soon.";e.target.reset()};
+$("hcf").onsubmit=function(e){e.preventDefault();$("hok").textContent="Quest accepted! We’ll reply soon.";e.target.reset()};
 })();

@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var IMG={door:"assets/images/door.png",rogue:"assets/images/rogue.png",ruins:"assets/images/ruins.jpg",arches:"assets/images/arches.png",mapA:"assets/images/mapA.jpg",mapB:"assets/images/mapB.jpg",knight:"assets/images/knight.png",mage:"assets/images/mage.png",ranger:"assets/images/ranger.png",dragon:"assets/images/dragon.png",dragon2:"assets/images/dragon2.png"};
+var IMG={door:"assets/images/door.png",rogue:"assets/images/rogue.png",ruins:"assets/images/ruins.jpg",arches:"assets/images/arches.png",mapA:"assets/images/mapA.jpg",knight:"assets/images/knight.png",mage:"assets/images/mage.png",ranger:"assets/images/ranger.png",dragon:"assets/images/dragon.png",dragon2:"assets/images/dragon2.png"};
 document.querySelectorAll("img[data-k]").forEach(function(i){i.src=IMG[i.dataset.k]});
 function py(src,limit){
 var steps=0,out=[],limit=limit||3e6,BRK={},CNT={};
@@ -116,16 +116,13 @@ function term(el,o,err){el.innerHTML=(err?'<b style="color:#ff8fa3">✗</b> ':"<
 function nDone(){return Object.keys(S.done).length}
 function unlocked(i){return i==0||S.done[i-1]||S.done[i]}
 /* map */
-var MAPS={A:{n:"Flooded Catacombs",img:"mapA",pos:[[6,33],[18,33],[28,24],[41,38],[49,52],[60,62],[72,62],[74,46],[82,22]],door:[89,31]},
-B:{n:"Crimson Crypt",img:"mapB",pos:[[7,12],[16,30],[27,40],[28,61],[27,78],[47,52],[57,37],[65,63],[88,52]],door:[91,19]}};
+var MAPS={A:{n:"Flooded Catacombs",img:"mapA",pos:[[6,33],[18,33],[28,24],[41,38],[49,52],[60,62],[72,62],[74,46],[82,22]],door:[89,31]}};
 function doorSvg(o){return '<img class="dimg" src="'+IMG.door+'" alt="">'+(o?"":'<i class="dcl"><b></b></i>')}
-function map(){var M=MAPS[S.map||"A"],pts=M.pos.concat([M.door]),all=nDone()>=L.length,im=$("mapimg");
+function map(){var M=MAPS.A,pts=M.pos.concat([M.door]),all=nDone()>=L.length,im=$("mapimg");
  if(im.dataset.k!=M.img){im.dataset.k=M.img;im.src=IMG[M.img]}
- document.querySelectorAll("#mtabs button").forEach(function(b){b.classList.toggle("on",b.dataset.m==(S.map||"A"))});
  $("route").innerHTML='<polyline points="'+pts.map(function(p){return p[0]+","+p[1]}).join(" ")+'"/>';
  $("mks").innerHTML=M.pos.map(function(p,i){return '<button class="mk'+(S.done[i]?" dn":i==cur?" on":"")+(unlocked(i)?"":" lk")+'" data-i="'+i+'" style="left:'+p[0]+"%;top:"+p[1]+'%" aria-label="Checkpoint '+(i+1)+": "+L[i].t+'">'+(S.done[i]?"✓":unlocked(i)?i+1:"🔒")+"</button>"}).join("")+
  '<button class="door '+(all?"op":"lk")+'" data-b="1" style="left:'+M.door[0]+"%;top:"+M.door[1]+'%" aria-label="Boss room door, '+(all?"open":"locked")+'">'+doorSvg(all)+"<span>"+(all?"OPEN ▶":"BOSS DOOR")+"</span></button>"}
-$("mtabs").onclick=function(e){var b=e.target.closest("button");if(!b)return;S.map=b.dataset.m;save();map()};
 
 /* ---- Dungeon guide (walks the route) ---- */
 (function(){
@@ -142,7 +139,7 @@ $("mtabs").onclick=function(e){var b=e.target.closest("button");if(!b)return;S.m
  var pts=[],key="",seg=[],cum=[0],tot=0,u=0,fr=0,n=0,snap=true,walking=false,seen=0,lastKey="";
  /* The guide only moves when the learner clears a checkpoint: it stands on the
     current checkpoint, then walks to the next one (or the boss door) as soon as
-    S.done grows. Switching maps or resizing just re-places it, without walking. */
+    S.done grows. Resizing just re-places it, without walking. */
  function load(){var el=document.querySelector("#route polyline");if(!el)return false;var k=el.getAttribute("points");if(k===key)return pts.length>1;key=k;
   pts=k.split(" ").map(function(p){var a=p.split(",");return[+a[0],+a[1]]});snap=true;return pts.length>1}
  function measure(){var W=mapEl.clientWidth,H=mapEl.clientHeight,old=tot;seg=[];cum=[0];tot=0;for(var i=1;i<pts.length;i++){var l=Math.hypot((pts[i][0]-pts[i-1][0])*W/100,(pts[i][1]-pts[i-1][1])*H/100);seg.push(l);tot+=l;cum.push(tot)}

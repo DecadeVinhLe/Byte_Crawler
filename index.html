@@ -35,6 +35,12 @@
 
 <section class="play" id="play"><div class="dialog"><h2>Ready to start?</h2><a class="btn" href="#course">Play</a></div></section>
 
+<section class="lime-contact" id="home-contact"><div class="wrap lc-in">
+<div><h2>Contact us</h2><p>Questions, ideas, or want to join the team? Drop us a line and we’ll reply soon.</p></div>
+<form id="hcf"><label>Name<input required autocomplete="name"></label><label>Email<input type="email" required autocomplete="email"></label>
+<label>Message<textarea rows="4" required></textarea></label><button class="btn" type="submit">Send</button><div class="ok" id="hok" aria-live="polite"></div></form>
+</div></section>
+
 </div>
 <div class="pg" id="about">
 <section class="tvs"><div class="wrap"><div class="tv"><div class="tv-s"></div><div class="tv-f"></div><div class="tv-t"><h2>About<br>ByteCrawler</h2><p>ByteCrawler is aimed at young people and learners from all fields, not only those in technology or engineering, who want to learn programming from scratch but have little foundational knowledge of information technology.</p></div></div></div></section>
@@ -68,7 +74,6 @@
 
 <div class="pg" id="course">
 <section class="sec"><div class="wrap"><h2>Learning path</h2><p class="lead" style="margin-bottom:26px">Clear each checkpoint to earn a reward and open the next room. The boss waits at the end.</p>
-<div class="mtabs" id="mtabs" role="group" aria-label="Choose a map"><button type="button" data-m="A">Map A · Flooded Catacombs</button><button type="button" data-m="B">Map B · Crimson Crypt</button></div>
 <div class="map" id="map"><img id="mapimg" alt="Pixel dungeon map with checkpoints"><svg id="route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><button type="button" class="py" id="py" aria-label="A friendly Python snake guide waits at your current checkpoint and moves on when you clear it. Click for a Python tip." hidden></button><div id="mks"></div><div class="pyb" id="pyb" role="status" hidden></div></div>
 <div class="cg">
 <aside class="card side">
