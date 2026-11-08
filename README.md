@@ -1,5 +1,6 @@
 # ByteCrawler
-
+![Dungeon]([https://example.com/path/to/image.png](https://t3.ftcdn.net/jpg/04/21/85/20/360_F_421852062_oLJjfT88cczyu3u28Qy3M2V8xmO8L770.jpg))
+image from: Adobe Stock
 Learn Python like you learn a language: a pixel-dungeon learning path with a Python snake guide, a boss fight, a community tab and a sandbox. It is a static site (plain HTML, CSS and JavaScript), so there is nothing to build or install.
 
 ## Folder structure
