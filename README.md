@@ -1,10 +1,5 @@
 # ByteCrawler
-</break>
-<p align="center">
-  <img src="assets/images/images.jpg" alt="Alt Text" width="600" />
-</p>
-Image from: Adobe Stock
-</break>
+
 Learn Python like you learn a language: a pixel-dungeon learning path with a Python snake guide, a boss fight, a community tab and a sandbox. It is a static site (plain HTML, CSS and JavaScript), so there is nothing to build or install.
 
 ## Folder structure
