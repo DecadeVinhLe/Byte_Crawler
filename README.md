@@ -1,7 +1,7 @@
 # ByteCrawler
 </break>
 <p align="center">
-  <img src="[https://example.com/path/to/image.png](https://t3.ftcdn.net/jpg/04/21/85/20/360_F_421852062_oLJjfT88cczyu3u28Qy3M2V8xmO8L770.jpg)" alt="Alt Text" width="600" />
+  <img src="[[https://example.com/path/to/image.png](https://t3.ftcdn.net/jpg/04/21/85/20/360_F_421852062_oLJjfT88cczyu3u28Qy3M2V8xmO8L770.jpg)](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3RN8kU96msZzmv_Kk1ul4CJq0ujEM42_2GqwSgIqHHl8G0RlMJ1UKnHsA&s=10)" alt="Alt Text" width="600" />
 </p>
 image from: Adobe Stock
 Learn Python like you learn a language: a pixel-dungeon learning path with a Python snake guide, a boss fight, a community tab and a sandbox. It is a static site (plain HTML, CSS and JavaScript), so there is nothing to build or install.
