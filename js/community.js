@@ -1,3 +1,4 @@
+/* Community tab (Reddit-style posts, votes, comments). */
 (function(){
 function $(i){return document.getElementById(i)}
 function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}

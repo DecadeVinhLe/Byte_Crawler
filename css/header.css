@@ -1,0 +1,65 @@
+/* Header: ByteCrawler purple pixel bar with RoboNation behaviour.
+   At the top of the page a slim utility strip (Dashboard, Community, theme) sits above the main bar.
+   Once you scroll, the strip slides away and the same three links come back as icon buttons inside the bar.
+   js/ui.js toggles header.scrolled and sets --strip (the strip's height). Nothing changes size, so no jitter. */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;font-family:var(--mono);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+header.scrolled{transform:translateY(calc(var(--strip,0px)*-1));box-shadow:0 5px 0 rgba(10,10,40,.28)}
+
+/* utility strip (top of page only) */
+.top{background:var(--top);display:flex;justify-content:flex-end;padding:0 16px;gap:4px;transition:opacity .2s,visibility 0s}
+header.scrolled .top{opacity:0;visibility:hidden;transition:opacity .2s,visibility 0s .3s}
+.top a,.top button{font:inherit;font-size:13px;color:var(--toptx);background:none;border:0;cursor:pointer;padding:8px 12px;border-radius:6px;display:inline-flex;align-items:center}
+.top a:hover,.top button:hover{background:rgba(95,106,240,.18)}
+.top a[aria-current="page"]{color:var(--blue);font-weight:700}
+:root[data-theme="dark"] .top a[aria-current="page"]{color:#fff}
+.th svg,.tl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.th .sun{display:none}
+:root[data-theme="dark"] .th .sun{display:block}:root[data-theme="dark"] .th .moon{display:none}
+.tl svg{display:none}
+
+/* main bar */
+.bar{background:var(--bar);display:flex;align-items:center;padding:12px 24px;position:relative;border-bottom:4px solid var(--deep)}
+.logo{font:700 18px var(--px);color:#fff;letter-spacing:.06em;display:flex;align-items:center;gap:10px}.logo svg{image-rendering:pixelated;flex:none}
+.nav{display:flex;gap:6px;margin:0 0 0 auto;padding:0;list-style:none;align-items:center}.nav>li{position:relative}
+.nav a,.j{font:700 13px var(--mono);text-transform:uppercase;color:#fff;background:var(--ink);border:2px solid var(--blue);border-radius:4px;padding:7px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.nav a:hover,.j:hover{background:#23234a}
+.nav a[aria-current="page"],.j.on{background:var(--blue);border-color:var(--gold)}
+.car{width:0;height:0;border:4px solid transparent;border-top:5px solid currentColor;border-bottom:0;transition:transform .2s}
+.j[aria-expanded="true"] .car{transform:rotate(180deg)}
+.menu{display:none;position:absolute;top:calc(100% + 6px);right:0;min-width:100%;background:var(--ink);border:2px solid var(--blue);border-radius:4px;padding:4px;margin:0;list-style:none;z-index:5}.menu.open{display:block}
+.menu::before{content:"";position:absolute;left:0;right:0;top:-8px;height:8px}
+.menu a{display:flex;border:0}
+@media(min-width:861px) and (hover:hover){.nav>li:hover>.menu{display:block}.nav>li:hover .j .car{transform:rotate(180deg)}}
+
+/* icon buttons: hidden at the top, they appear in the bar once the strip has slid away */
+.ico{display:flex;align-items:center;gap:6px;margin:0;max-width:0;opacity:0;visibility:hidden;overflow:hidden;transition:max-width .3s ease,margin .3s ease,opacity .2s,visibility 0s .3s}
+header.scrolled .ico{max-width:150px;margin-left:12px;opacity:1;visibility:visible;transition:max-width .3s ease,margin .3s ease,opacity .25s .1s,visibility 0s}
+.ico a,.ico button{flex:none;width:38px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:#fff;background:var(--ink);border:2px solid var(--blue);border-radius:4px;cursor:pointer;font:inherit}
+.ico a:hover,.ico button:hover{background:#23234a}
+.ico a[aria-current="page"]{background:var(--blue);border-color:var(--gold)}
+.ico :focus-visible{outline-offset:-4px}
+.ico svg{display:block;width:18px;height:18px}
+
+/* hamburger (phone) */
+.burger{display:none;background:var(--ink);border:2px solid var(--blue);border-radius:4px;width:42px;height:38px;cursor:pointer;align-items:center;justify-content:center;padding:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:#fff;position:relative;content:"";transition:transform .2s,top .2s,background .2s}
+.burger span::before{position:absolute;top:-6px}.burger span::after{position:absolute;top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+@keyframes tray{from{opacity:0;transform:translateY(-8px)}}
+@media(max-width:380px){.logo{font-size:14px;gap:8px}.logo svg{width:30px;height:30px}.bar{padding:10px 12px}}
+@media(max-width:860px){
+.top{padding:0 8px;gap:2px}.top a,.top button{padding:8px 10px}
+.tl svg{display:block}.tl span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.bar{padding:10px 16px}.burger{display:inline-flex;order:3;margin-left:8px}
+.ico{order:2;margin-left:auto}header.scrolled .ico{margin-left:auto}
+.ico a,.ico button{width:34px;height:34px}
+.nav{display:none;position:absolute;left:0;right:0;top:100%;margin:0;flex-direction:column;align-items:stretch;gap:8px;padding:14px 16px 18px;background:var(--bar);border-bottom:4px solid var(--deep);box-shadow:0 10px 0 rgba(10,10,40,.35);max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px);overflow-y:auto;overscroll-behavior:contain;z-index:45}
+.nav.open{display:flex;animation:tray .18s ease-out}
+.nav a,.j{width:100%;justify-content:space-between;padding:11px 14px}
+.menu{position:static;margin-top:6px;min-width:0}.menu::before{display:none}
+}
+/* Dim the page while the phone menu is open and stop it scrolling underneath */
+.nv-ov{position:fixed;inset:0;background:rgba(10,10,30,.55);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s;z-index:45}
+.nv-lock{overflow:hidden}.nv-lock .nv-ov{opacity:1;visibility:visible;transition-delay:0s}
