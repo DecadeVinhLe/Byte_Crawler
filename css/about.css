@@ -2,7 +2,7 @@
    card surface + 3px line + hard shadow, VT323 type, blue band like the home hero. */
 
 /* shared section pieces */
-.ab-sec,.ab-video,.ab-mis{padding:96px 0}
+.ab-sec,.ab-video{padding:96px 0}.ab-mis{padding:48px 0}
 .ab-head{text-align:center;max-width:680px;margin:0 auto 44px}
 .ab-eye{margin:0 0 8px;font:400 22px var(--mono);letter-spacing:.22em;color:var(--blue);text-transform:uppercase}
 .ab-h{font:400 clamp(48px,6.4vw,78px)/.95 var(--px);text-transform:none;letter-spacing:.03em;color:var(--tx)}
@@ -36,11 +36,11 @@
 .ab-win{margin:0;display:flex;flex-direction:column;background:#0d0d1f;border:3px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.45);overflow:hidden}
 .ab-bar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:#1e1e3a;color:#c9cdf5;font:400 20px var(--mono);letter-spacing:.04em}
 .ab-bar i{width:11px;height:11px;background:#f0675d}.ab-bar i:nth-child(2){background:#f5be4f}.ab-bar i:nth-child(3){background:#5bd36a}.ab-bar span{margin-left:8px}
-.ab-win img{flex:1;min-height:0;width:100%;object-fit:cover;object-position:left top;display:block}
-.ab-mission{display:flex;flex-direction:column;justify-content:center;padding:40px 36px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
+.ab-win img{flex:1 1 0px;height:0;min-height:230px;width:100%;object-fit:cover;object-position:left top;display:block}
+.ab-mission{display:flex;flex-direction:column;justify-content:center;padding:26px 30px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
 .ab-h2{font:400 clamp(44px,5vw,62px)/.95 var(--px);text-transform:none;letter-spacing:.03em;color:var(--tx);margin:0}
-.ab-mission p:not(.ab-eye){margin-top:16px;font:400 24px/1.3 var(--mono);color:var(--mu)}
-.ab-chips{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ab-mission p:not(.ab-eye){margin-top:10px;font:400 24px/1.3 var(--mono);color:var(--mu)}
+.ab-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .ab-chips li{font:400 20px var(--mono);letter-spacing:.04em;padding:2px 12px;border:2px solid var(--line);background:var(--page);color:var(--tx)}
 
 /* 4. Three pillars */
@@ -67,7 +67,7 @@
 @media(prefers-reduced-motion:reduce){.js-rv .ab-rv{opacity:1!important;transform:none!important;transition:none!important}}
 
 @media(max-width:860px){
- .ab-sec,.ab-video,.ab-mis{padding:64px 0}.ab-intro{padding:40px 0 0}.ab-head{margin-bottom:30px}
+ .ab-sec,.ab-video{padding:64px 0}.ab-mis{padding:36px 0}.ab-intro{padding:40px 0 0}.ab-head{margin-bottom:30px}
  .ab-mis-in{grid-template-columns:1fr;gap:24px}.ab-win img{height:240px;flex:none}.ab-mission{padding:30px 24px}
  .ab-grid{grid-template-columns:1fr}.ab-cta{padding:76px 0}.vplay i{width:64px;height:64px}.vplay i::before{border-left-width:20px;border-top-width:12px;border-bottom-width:12px}
 }
