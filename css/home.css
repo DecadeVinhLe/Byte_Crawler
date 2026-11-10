@@ -9,12 +9,14 @@
 .hero .in{position:relative;z-index:2;width:100%;max-width:820px;margin:0 auto;padding:0 clamp(24px,6vw,64px)}
 .hero h1{font:400 clamp(60px,10vw,112px)/.9 var(--px);text-transform:none;letter-spacing:.04em;text-shadow:4px 4px 0 #0a0a3a}
 .hero p{margin:20px auto 0;max-width:640px;font:400 30px/1.2 var(--mono);color:#eef0ff;text-shadow:2px 2px 0 #0a0a3a}
-.hero .in{max-width:920px}
-.hero-facts{list-style:none;margin:36px auto 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
-.hero-facts li{padding:14px 18px 16px;background:rgba(10,10,58,.78);border:3px solid #8a93ff;box-shadow:4px 4px 0 #0a0a3a}
-.hero-facts b{display:block;font:400 40px/1 var(--px);color:var(--gold);text-shadow:2px 2px 0 #0a0a3a}
-.hero-facts span{display:block;margin-top:6px;font:400 24px/1.15 var(--mono);color:#e4e7ff}
-@media(max-width:860px){.hero{min-height:420px;padding:72px 0 80px}.hero p{font-size:26px}.hero-facts{grid-template-columns:1fr}}
+.hero .in{max-width:1120px}
+.hero:has(.hero-facts)::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(0deg,rgba(6,8,24,.78) 0%,rgba(6,8,24,.35) 42%,rgba(6,8,24,0) 70%)}
+.hero-facts{list-style:none;margin:56px auto 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px;text-align:left}
+.hero-facts li{padding:16px 0 0;border-top:2px solid rgba(255,210,63,.85);background:none;border-left:0;border-right:0;border-bottom:0;box-shadow:none}
+.hero-facts b{display:block;font:400 30px/1.05 var(--px);color:#fff;text-shadow:0 2px 14px rgba(6,8,24,.8)}
+.hero-facts span{display:block;margin-top:8px;font:400 22px/1.2 var(--mono);color:#d6dbff;text-shadow:0 1px 12px rgba(6,8,24,.85)}
+@media(max-width:1000px){.hero-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 28px}}
+@media(max-width:860px){.hero{min-height:420px;padding:72px 0 80px}.hero p{font-size:26px}.hero-facts{grid-template-columns:1fr;gap:22px;margin-top:40px}}
 
 @keyframes bob{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(var(--r)) translateY(-8px)}}
 .journey{background:var(--deep);color:#fff}.journey .lead{color:#c9cdf5}

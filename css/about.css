@@ -1,85 +1,72 @@
-/* About page: full-bleed dungeon hero, then open sections with no boxes.
-   Hero picture: assets/images/about-hero.webp. Text lives in index.html (#about). */
+/* About page: retro monitor hero, video, mission, beliefs, closing call to action.
+   Always dark so it reads the same in light or dark theme. Images: about-crt.png, about-code.png, arches.png, ruins.jpg */
+#about{background:#0a0c1e;color:#eef0ff;--ab-line:#5f6af0;--ab-card:#16163a}
+.ab-eye{display:block;font:400 22px var(--mono);letter-spacing:.32em;text-transform:uppercase;color:#4a55f0}
+.ab-eye.c,.ab-h.c{text-align:center}
+.ab-h{font:400 clamp(44px,5.4vw,72px)/1 var(--px);text-transform:none;letter-spacing:.02em;color:#f1f2ff}
 
-#about{--ab-accent:var(--blue);--ab-rule:color-mix(in srgb,var(--tx) 22%,transparent)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #about{--ab-accent:#8f98ff}}
-:root[data-theme="dark"] #about{--ab-accent:#8f98ff}
+/* hero: monitor with live text on its screen */
+.ab-hero{padding:40px 0 72px}
+.crt{position:relative;width:min(100%,520px);margin:0 auto;container-type:inline-size}
+.crt img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.crt-scr{position:absolute;left:11.9%;top:11.3%;width:75.2%;height:58.4%;padding:7% 6.5%;border-radius:2.6%;overflow:hidden;
+ background:radial-gradient(ellipse 55% 55% at 38% 42%,#5862e8 0%,#3340dc 45%,#2230cf 100%),#2a36d6}
+.crt-scr::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.22) 1px,transparent 1.2px) 0 0/4px 4px;pointer-events:none}
+.crt-scr>*{position:relative}
+.crt-scr h1{font:400 9cqw/1.1 var(--px);text-transform:none;letter-spacing:.02em;color:#fff}
+.crt-scr p{margin-top:3.5cqw;font:400 4cqw/1.4 var(--mono);color:#fff}
+.ab-chips{list-style:none;margin:22px auto 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.ab-chips li{padding:12px 24px;font:400 20px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#eef0ff;background:#12122e;border:3px solid var(--ab-line);box-shadow:4px 4px 0 var(--ab-line)}
 
-/* ---- hero ---- */
-.ab-hero{position:relative;display:flex;align-items:center;min-height:clamp(540px,calc(100svh - 140px),800px);padding:96px 0 112px;color:#fff;
- background:
-  linear-gradient(90deg,rgba(6,8,24,.92) 0%,rgba(6,8,24,.78) 34%,rgba(6,8,24,.26) 68%,rgba(6,8,24,.04) 100%),
-  linear-gradient(0deg,rgba(6,8,24,.55) 0%,rgba(6,8,24,0) 30%),
-  #0a0d22 url(../assets/images/about-hero.webp) 74% center/cover no-repeat;
- image-rendering:pixelated}
-.ab-hero .wrap{width:100%}
-.ab-hero-in{max-width:720px;animation:abIn .9s cubic-bezier(.2,.8,.2,1) both}
-.ab-hero h1{font:400 clamp(44px,5.6vw,80px)/.96 var(--px);text-transform:none;letter-spacing:.01em;text-shadow:0 2px 26px rgba(0,0,0,.6)}
-.ab-hero p{margin-top:24px;max-width:520px;font:400 clamp(24px,2.1vw,30px)/1.3 var(--mono);color:#e1e5ff;text-shadow:0 1px 14px rgba(0,0,0,.7)}
-.ab-btns{display:flex;flex-wrap:wrap;gap:14px}
-.ab-hero .ab-btns{margin-top:36px}
-@keyframes abIn{from{opacity:0;transform:translateY(12px)}}
+/* video */
+.ab-video{padding:56px 0 96px;text-align:center}
+.ab-video .ab-eye{margin-bottom:10px}
+.vbox{position:relative;max-width:960px;margin:44px auto 0;aspect-ratio:16/9;overflow:hidden;background:#0d0f26 url(../assets/images/arches.png) center/cover no-repeat;image-rendering:pixelated;box-shadow:6px 6px 0 #14143a}
+.vbox::before{content:"";position:absolute;inset:0;background:rgba(6,8,24,.32)}
+.vbox iframe,.vbox video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;z-index:1}
+.vplay{position:absolute;inset:0;z-index:1;width:100%;display:grid;place-content:center;justify-items:center;gap:22px;background:none;border:0;color:#fff;cursor:pointer;font:400 26px var(--mono);letter-spacing:.03em}
+.vplay i{width:84px;height:84px;display:grid;place-items:center;background:#8b8aab;transition:transform .15s}
+.vplay:hover i{transform:scale(1.05)}
+.vplay i::before{content:"";border-left:28px solid #14142b;border-top:17px solid transparent;border-bottom:17px solid transparent;margin-left:8px}
+.vbox.off .vplay{cursor:default}.vbox.off .vplay:hover i{transform:none}
 
-/* ---- shared ---- */
-.ab-h{font:400 clamp(40px,4.4vw,58px)/1 var(--px);text-transform:none;letter-spacing:.01em;color:var(--tx)}
-.ab-how,.ab-believe,.ab-video{padding:104px 0}
+/* mission */
+.ab-mission{padding:64px 0;background:#1a1ab0 radial-gradient(rgba(255,255,255,.16) 1px,transparent 1.2px) 0 0/16px 16px}
+.ab-mission-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:stretch}
+.ab-code{margin:0;background:#000;border:3px solid #0a0c1e;box-shadow:6px 6px 0 #0d0d6a;display:flex;flex-direction:column;min-height:300px}
+.ab-code-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#1f2038;font:400 20px var(--mono);color:#cfd3ff}
+.ab-code-bar i{width:14px;height:14px;background:#ff5f57}.ab-code-bar i:nth-child(2){background:#febc2e}.ab-code-bar i:nth-child(3){background:#28c840}
+.ab-code-bar span{margin-left:8px}
+.ab-code img{flex:1;min-height:0;width:100%;object-fit:cover;object-position:left top;display:block}
+.ab-mbox{padding:36px 40px 40px;background:#16163a;border:3px solid var(--ab-line);box-shadow:6px 6px 0 #0d0d6a}
+.ab-mbox .ab-eye{color:#a9aee0;margin-bottom:6px}
+.ab-mbox .ab-h{font-size:clamp(44px,4.6vw,64px)}
+.ab-mbox>p{margin-top:18px;font:400 26px/1.45 var(--mono);color:#9fa6ee}
+.ab-tags{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.ab-tags li{padding:6px 16px;font:400 22px var(--mono);color:#eef0ff;background:#12122e;border:2px solid var(--ab-line)}
 
-/* ---- optional video (hidden until data-video is set) ---- */
-.vbox{position:relative;max-width:960px;margin:40px auto 0;aspect-ratio:16/9;background:#090b1c;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.vbox iframe,.vbox video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
-.vplay{position:absolute;inset:0;width:100%;display:grid;place-content:center;justify-items:center;gap:16px;background:none;border:0;color:#fff;cursor:pointer;font:400 24px var(--mono);letter-spacing:.04em}
-.vplay i{width:84px;height:84px;display:grid;place-items:center;background:var(--gold);transition:transform .2s ease}
-.vplay:hover i{transform:scale(1.06)}
-.vplay i::before{content:"";border-left:26px solid var(--ink);border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:8px}
+/* beliefs */
+.ab-believe{padding:96px 0 104px;background:#0a0c1e;border-top:4px solid #1a1ab0}
+.ab-believe .ab-eye{margin-bottom:10px}
+.ab-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:64px}
+.ab-card{padding:44px 44px 48px;background:var(--ab-card);border:3px solid var(--ab-line);box-shadow:8px 8px 0 var(--ab-line)}
+.ab-card b{display:inline-block;padding:6px 12px;font:400 26px/1 var(--mono);color:#14142b;background:var(--gold)}
+.ab-card h3{margin:26px 0 12px;font:400 40px/1 var(--px);text-transform:none;letter-spacing:.03em;color:#fff}
+.ab-card p{font:400 25px/1.45 var(--mono);color:#a9aee0}
 
-/* ---- how it works: three steps ---- */
-.ab-steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 56px}
-.ab-steps li{padding-top:24px;border-top:2px solid var(--ab-rule)}
-.ab-step{display:block;margin-bottom:14px;font:400 60px/1 var(--px);color:var(--ab-accent)}
-.ab-steps h3{font:400 36px/1 var(--px);text-transform:none;margin:0 0 10px;color:var(--tx)}
-.ab-steps p{max-width:34ch;font:400 24px/1.3 var(--mono);color:var(--mu)}
+/* closing call to action: torch-lit dungeon gate (assets/images/about-cta.jpg) */
+.ab-cta{position:relative;isolation:isolate;overflow:hidden;text-align:center;color:#fff;padding:120px 0;
+ background:#0a0d22 url(../assets/images/about-cta.jpg) center/cover no-repeat;image-rendering:pixelated}
+.ab-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 55% at 50% 48%,rgba(6,8,24,.68),rgba(6,8,24,.2) 80%),linear-gradient(rgba(6,8,24,.1),rgba(20,26,110,.5))}
+.ab-cta .in{max-width:760px;margin:0 auto;padding:0 24px}
+.ab-cta h2{font:400 clamp(56px,7vw,96px)/.95 var(--px);text-transform:none;letter-spacing:.03em;text-shadow:4px 4px 0 #3b46e0}
+.ab-cta p{margin:22px 0 36px;font:400 28px/1.3 var(--mono);color:#eef0ff}
+.ab-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
 
-/* ---- mission: picture bleeds to the edge, text beside it ---- */
-.ab-split{padding:0;background:var(--easy)}
-.ab-split-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:500px}
-.ab-split figure{position:relative;margin:0;min-height:340px}
-.ab-split figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
-.ab-split-tx{align-self:center;max-width:660px;padding:88px clamp(28px,6vw,96px)}
-.ab-split-tx>p{margin-top:18px;max-width:34ch;font:400 26px/1.3 var(--mono);color:var(--mu)}
-.ab-list{list-style:none;margin:30px 0 0;padding:0;max-width:420px}
-.ab-list li{padding:11px 0;border-top:1px solid var(--ab-rule);font:400 26px/1.2 var(--mono);color:var(--tx)}
-.ab-list li:last-child{border-bottom:1px solid var(--ab-rule)}
-
-/* ---- what we believe: heading left, three statements right ---- */
-.ab-believe-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
-.ab-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--ab-rule)}
-.ab-row:last-child{border-bottom:1px solid var(--ab-rule)}
-.ab-row h3{font:400 34px/1 var(--px);text-transform:none;color:var(--tx)}
-.ab-row p{font:400 26px/1.3 var(--mono);color:var(--mu)}
-
-/* ---- closing call to action ---- */
-.ab-cta{position:relative;isolation:isolate;overflow:hidden;text-align:center;color:#fff;padding:116px 0;
- background:#0a0d22 url(../assets/images/arches.png) center/cover no-repeat;image-rendering:pixelated}
-.ab-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(6,8,24,.58),rgba(14,18,70,.74))}
-.ab-cta .in{max-width:640px;margin:0 auto;padding:0 24px}
-.ab-cta h2{font:400 clamp(52px,6.4vw,84px)/.95 var(--px);text-transform:none;letter-spacing:.01em;text-shadow:0 2px 24px rgba(0,0,0,.55)}
-.ab-cta p{margin:16px 0 32px;font:400 28px/1.3 var(--mono);color:#e1e5ff}
-.ab-cta .ab-btns{justify-content:center}
-
-/* ---- gentle reveal on scroll (js/about.js; off for reduced motion) ---- */
-.js-rv .ab-rv{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
-.js-rv .ab-rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js-rv .ab-rv{opacity:1!important;transform:none!important;transition:none!important}}
-
-@media(max-width:860px){
- .ab-hero{min-height:0;padding:72px 0 88px;
-  background:linear-gradient(rgba(6,8,24,.8),rgba(6,8,24,.66)),#0a0d22 url(../assets/images/about-hero.webp) 78% center/cover no-repeat}
- .ab-hero .ab-btns{margin-top:30px}
- .ab-how,.ab-believe,.ab-video{padding:72px 0}
- .ab-steps{grid-template-columns:1fr;gap:36px;margin-top:40px}
- .ab-split-in{grid-template-columns:1fr}.ab-split figure{min-height:0;aspect-ratio:16/10}.ab-split-tx{padding:56px 24px;max-width:none}
- .ab-believe-in{grid-template-columns:1fr;gap:28px}
- .ab-row{grid-template-columns:1fr;gap:8px;padding:22px 0}
- .ab-cta{padding:84px 0}.vplay i{width:64px;height:64px}
- .vplay i::before{border-left-width:20px;border-top-width:12px;border-bottom-width:12px}
+@media(max-width:900px){
+ .ab-mission-in{grid-template-columns:1fr;gap:36px}.ab-code{min-height:240px}
+ .ab-cards{grid-template-columns:1fr;gap:28px;margin-top:44px}
+ .ab-mbox{padding:28px 24px 32px}.ab-card{padding:32px 28px 36px}
+ .ab-believe{padding:72px 0}.ab-cta{padding:84px 0}.ab-video{padding:40px 0 72px}
+ .vplay i{width:64px;height:64px}.vplay i::before{border-left-width:20px;border-top-width:12px;border-bottom-width:12px}
 }
