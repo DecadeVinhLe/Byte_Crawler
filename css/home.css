@@ -28,17 +28,6 @@ background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px),
 .hero h1{font-family:"VT323",ui-monospace,monospace;font-weight:900;text-shadow:none;letter-spacing:.04em}
 .play{background:#2a22a4 url(../assets/images/play-bg.png) center/cover no-repeat!important;image-rendering:pixelated}
 .play::before{display:none!important}
-.lime-contact{position:relative;background:#14142b radial-gradient(rgba(95,106,240,.22) 1.3px,transparent 1.4px) 0 0/14px 14px;color:#b8f032;padding:72px 0;border-top:4px solid #5f6af0;border-bottom:4px solid #5f6af0}
-.lc-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.lime-contact h2{font-size:clamp(36px,6.5vw,60px);color:#FFD23F;text-shadow:3px 3px 0 #3b46e0}
-.lime-contact p{margin-top:14px;max-width:420px;color:#b8f032}
-.lime-contact form{margin-top:0;max-width:none}
-.lime-contact label{color:#b8f032}
-.lime-contact input,.lime-contact textarea{background:#0e0e24;color:#b8f032;border:3px solid #b8f032}
-.lime-contact input::placeholder,.lime-contact textarea::placeholder{color:rgba(184,240,50,.5)}
-.lime-contact input:focus,.lime-contact textarea:focus{outline:3px solid #5f6af0;outline-offset:2px}
-.lime-contact .ok{color:#b8f032}
-@media(max-width:860px){.lc-in{grid-template-columns:1fr;gap:24px}.lime-contact{padding:52px 0}}
 @media(max-width:860px){.two{grid-template-columns:1fr}.hero{padding:70px 0 90px}}
 
 /* Make It Easy: loot art in a frame on the left, a short pitch on the right */

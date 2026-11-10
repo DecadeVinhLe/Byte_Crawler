@@ -44,5 +44,4 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
 
 /* ---- Contact forms (front-end only for now) ---- */
 $("cf").onsubmit=function(e){e.preventDefault();$("ok").textContent="Quest accepted! We\u2019ll reply soon.";e.target.reset()};
-$("hcf").onsubmit=function(e){e.preventDefault();$("hok").textContent="Quest accepted! We\u2019ll reply soon.";e.target.reset()};
 })();
