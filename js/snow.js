@@ -1,4 +1,4 @@
-/* Hero snow (three.js). Square pixel flakes drift down behind the crown.
+/* Hero snow (three.js). Square pixel flakes drift down in front of the cave.
    If three.js or WebGL is unavailable the hero simply stays still. */
 (function(){
  var cv=document.getElementById("snow"),hero=cv&&cv.parentNode;if(!cv)return;

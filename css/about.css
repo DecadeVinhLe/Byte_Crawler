@@ -1,73 +1,85 @@
-/* About page. Built from the same blocks as the rest of the site:
-   card surface + 3px line + hard shadow, VT323 type, blue band like the home hero. */
+/* About page: full-bleed dungeon hero, then open sections with no boxes.
+   Hero picture: assets/images/about-hero.webp. Text lives in index.html (#about). */
 
-/* shared section pieces */
-.ab-sec,.ab-video{padding:96px 0}.ab-mis{padding:48px 0}
-.ab-head{text-align:center;max-width:680px;margin:0 auto 44px}
-.ab-eye{margin:0 0 8px;font:400 22px var(--mono);letter-spacing:.22em;color:var(--blue);text-transform:uppercase}
-.ab-h{font:400 clamp(48px,6.4vw,78px)/.95 var(--px);text-transform:none;letter-spacing:.03em;color:var(--tx)}
-.ab-card{background:var(--card);border:3px solid var(--line);box-shadow:6px 6px 0 var(--line);padding:30px 28px}
+#about{--ab-accent:var(--blue);--ab-rule:color-mix(in srgb,var(--tx) 22%,transparent)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #about{--ab-accent:#8f98ff}}
+:root[data-theme="dark"] #about{--ab-accent:#8f98ff}
 
-/* 1. TV intro */
-.ab-intro{padding:28px 0 8px;background:var(--page)}
-.tv{position:relative;width:min(100%,760px,max(320px,calc((100svh - 300px)*1.017)));aspect-ratio:468/460;margin:0 auto;container-type:inline-size}
-.tv-s{position:absolute;left:12.2%;right:13.2%;top:11.6%;bottom:30.6%;border-radius:4% / 5%;background:radial-gradient(ellipse at 38% 42%,#5d62e6 0,#2d35d4 38%,#1a22c0 75%,#1419a8 100%)}
-.tv-s::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1.3px) 0 0/4px 4px}
-.tv-f{position:absolute;inset:0;background:url(../assets/images/tv-frame.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;pointer-events:none}
-.tv-t{position:absolute;z-index:2;left:12.2%;right:13.2%;top:11.6%;bottom:30.6%;padding:0 6cqw;display:flex;flex-direction:column;justify-content:center;color:#fff;text-align:left}
-.tv-t h2{font:400 8.6cqw/.95 var(--px);text-transform:none;letter-spacing:.04em}
-.tv-t p{margin-top:2.4cqw;font:400 max(15px,3.6cqw)/1.2 var(--mono);letter-spacing:.03em;text-shadow:1px 1px 0 rgba(0,0,0,.4)}
-.ab-who{list-style:none;margin:12px auto 0;padding:0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.ab-who li{font:400 22px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 16px;border:3px solid var(--line);background:var(--card);box-shadow:3px 3px 0 var(--line)}
+/* ---- hero ---- */
+.ab-hero{position:relative;display:flex;align-items:center;min-height:clamp(540px,calc(100svh - 140px),800px);padding:96px 0 112px;color:#fff;
+ background:
+  linear-gradient(90deg,rgba(6,8,24,.92) 0%,rgba(6,8,24,.78) 34%,rgba(6,8,24,.26) 68%,rgba(6,8,24,.04) 100%),
+  linear-gradient(0deg,rgba(6,8,24,.55) 0%,rgba(6,8,24,0) 30%),
+  #0a0d22 url(../assets/images/about-hero.webp) 74% center/cover no-repeat;
+ image-rendering:pixelated}
+.ab-hero .wrap{width:100%}
+.ab-hero-in{max-width:720px;animation:abIn .9s cubic-bezier(.2,.8,.2,1) both}
+.ab-hero h1{font:400 clamp(44px,5.6vw,80px)/.96 var(--px);text-transform:none;letter-spacing:.01em;text-shadow:0 2px 26px rgba(0,0,0,.6)}
+.ab-hero p{margin-top:24px;max-width:520px;font:400 clamp(24px,2.1vw,30px)/1.3 var(--mono);color:#e1e5ff;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.ab-btns{display:flex;flex-wrap:wrap;gap:14px}
+.ab-hero .ab-btns{margin-top:36px}
+@keyframes abIn{from{opacity:0;transform:translateY(12px)}}
 
-/* 2. Intro video */
-.vbox{position:relative;max-width:900px;margin:0 auto;aspect-ratio:16/9;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:#0b0b1a;overflow:hidden;transition:transform .25s ease}
-.vbox:not(.empty):hover{transform:translateY(-3px)}
-.vbox>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;opacity:.45}
+/* ---- shared ---- */
+.ab-h{font:400 clamp(40px,4.4vw,58px)/1 var(--px);text-transform:none;letter-spacing:.01em;color:var(--tx)}
+.ab-how,.ab-believe,.ab-video{padding:104px 0}
+
+/* ---- optional video (hidden until data-video is set) ---- */
+.vbox{position:relative;max-width:960px;margin:40px auto 0;aspect-ratio:16/9;background:#090b1c;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)}
 .vbox iframe,.vbox video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
-.vplay{position:absolute;inset:0;width:100%;display:grid;place-content:center;justify-items:center;gap:16px;background:none;border:0;color:#fff;cursor:pointer;font:400 24px var(--mono);letter-spacing:.06em}
-.vplay i{width:84px;height:84px;display:grid;place-items:center;background:var(--gold);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.vplay{position:absolute;inset:0;width:100%;display:grid;place-content:center;justify-items:center;gap:16px;background:none;border:0;color:#fff;cursor:pointer;font:400 24px var(--mono);letter-spacing:.04em}
+.vplay i{width:84px;height:84px;display:grid;place-items:center;background:var(--gold);transition:transform .2s ease}
+.vplay:hover i{transform:scale(1.06)}
 .vplay i::before{content:"";border-left:26px solid var(--ink);border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:8px}
-.vbox.empty .vplay{cursor:default}.vbox.empty .vplay i{background:#8d8aa8}
 
-/* 3. Mission: code window + card on the site's blue band */
-.ab-mis{background:var(--deep) radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.6px) 0 0/16px 16px;border-top:6px solid var(--bar);border-bottom:6px solid var(--bar)}
-.ab-mis-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px;align-items:stretch;max-width:980px;margin:0 auto}
-.ab-win{margin:0;display:flex;flex-direction:column;background:#0d0d1f;border:3px solid var(--ink);box-shadow:6px 6px 0 rgba(0,0,0,.45);overflow:hidden}
-.ab-bar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:#1e1e3a;color:#c9cdf5;font:400 20px var(--mono);letter-spacing:.04em}
-.ab-bar i{width:11px;height:11px;background:#f0675d}.ab-bar i:nth-child(2){background:#f5be4f}.ab-bar i:nth-child(3){background:#5bd36a}.ab-bar span{margin-left:8px}
-.ab-win img{flex:1 1 0px;height:0;min-height:230px;width:100%;object-fit:cover;object-position:left top;display:block}
-.ab-mission{display:flex;flex-direction:column;justify-content:center;padding:26px 30px;box-shadow:6px 6px 0 rgba(0,0,0,.45)}
-.ab-h2{font:400 clamp(44px,5vw,62px)/.95 var(--px);text-transform:none;letter-spacing:.03em;color:var(--tx);margin:0}
-.ab-mission p:not(.ab-eye){margin-top:10px;font:400 24px/1.3 var(--mono);color:var(--mu)}
-.ab-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.ab-chips li{font:400 20px var(--mono);letter-spacing:.04em;padding:2px 12px;border:2px solid var(--line);background:var(--page);color:var(--tx)}
+/* ---- how it works: three steps ---- */
+.ab-steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 56px}
+.ab-steps li{padding-top:24px;border-top:2px solid var(--ab-rule)}
+.ab-step{display:block;margin-bottom:14px;font:400 60px/1 var(--px);color:var(--ab-accent)}
+.ab-steps h3{font:400 36px/1 var(--px);text-transform:none;margin:0 0 10px;color:var(--tx)}
+.ab-steps p{max-width:34ch;font:400 24px/1.3 var(--mono);color:var(--mu)}
 
-/* 4. Three pillars */
-.ab-sec{background:var(--page)}
-.ab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:1040px;margin:0 auto}
-.ab-grid .ab-card{transition:transform .2s ease,box-shadow .2s ease}
-.ab-grid .ab-card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--line)}
-.ab-n{display:grid;place-items:center;width:46px;height:46px;margin-bottom:18px;background:var(--gold);color:var(--ink);border:3px solid var(--ink);font:400 26px var(--mono)}
-.ab-card h3{font:400 40px/1 var(--px);text-transform:none;letter-spacing:.03em;margin:0 0 10px}
-.ab-card p{font:400 24px/1.3 var(--mono);color:var(--mu)}
+/* ---- mission: picture bleeds to the edge, text beside it ---- */
+.ab-split{padding:0;background:var(--easy)}
+.ab-split-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:500px}
+.ab-split figure{position:relative;margin:0;min-height:340px}
+.ab-split figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+.ab-split-tx{align-self:center;max-width:660px;padding:88px clamp(28px,6vw,96px)}
+.ab-split-tx>p{margin-top:18px;max-width:34ch;font:400 26px/1.3 var(--mono);color:var(--mu)}
+.ab-list{list-style:none;margin:30px 0 0;padding:0;max-width:420px}
+.ab-list li{padding:11px 0;border-top:1px solid var(--ab-rule);font:400 26px/1.2 var(--mono);color:var(--tx)}
+.ab-list li:last-child{border-bottom:1px solid var(--ab-rule)}
 
-/* 5. Call to action */
-.ab-cta{position:relative;overflow:hidden;text-align:center;color:#fff;padding:104px 0;background:#0b0b1a}
-.ab-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;opacity:.85}
-.ab-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(10,10,40,.45),rgba(26,26,176,.6))}
-.ab-cta .in{position:relative;z-index:2;max-width:640px;margin:0 auto;padding:0 24px}
-.ab-cta h2{font:400 clamp(56px,8vw,96px)/.9 var(--px);text-transform:none;letter-spacing:.03em;text-shadow:4px 4px 0 var(--blue)}
-.ab-cta p{margin:16px 0 28px;font:400 26px/1.3 var(--mono);color:#e4e7ff}
-.ab-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* ---- what we believe: heading left, three statements right ---- */
+.ab-believe-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.ab-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;padding:28px 0;border-top:1px solid var(--ab-rule)}
+.ab-row:last-child{border-bottom:1px solid var(--ab-rule)}
+.ab-row h3{font:400 34px/1 var(--px);text-transform:none;color:var(--tx)}
+.ab-row p{font:400 26px/1.3 var(--mono);color:var(--mu)}
 
-/* gentle reveal on scroll (js/about.js) */
-.js-rv .ab-rv{opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+/* ---- closing call to action ---- */
+.ab-cta{position:relative;isolation:isolate;overflow:hidden;text-align:center;color:#fff;padding:116px 0;
+ background:#0a0d22 url(../assets/images/arches.png) center/cover no-repeat;image-rendering:pixelated}
+.ab-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(6,8,24,.58),rgba(14,18,70,.74))}
+.ab-cta .in{max-width:640px;margin:0 auto;padding:0 24px}
+.ab-cta h2{font:400 clamp(52px,6.4vw,84px)/.95 var(--px);text-transform:none;letter-spacing:.01em;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.ab-cta p{margin:16px 0 32px;font:400 28px/1.3 var(--mono);color:#e1e5ff}
+.ab-cta .ab-btns{justify-content:center}
+
+/* ---- gentle reveal on scroll (js/about.js; off for reduced motion) ---- */
+.js-rv .ab-rv{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
 .js-rv .ab-rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.js-rv .ab-rv{opacity:1!important;transform:none!important;transition:none!important}}
 
 @media(max-width:860px){
- .ab-sec,.ab-video{padding:64px 0}.ab-mis{padding:36px 0}.ab-intro{padding:40px 0 0}.ab-head{margin-bottom:30px}
- .ab-mis-in{grid-template-columns:1fr;gap:24px}.ab-win img{height:240px;flex:none}.ab-mission{padding:30px 24px}
- .ab-grid{grid-template-columns:1fr}.ab-cta{padding:76px 0}.vplay i{width:64px;height:64px}.vplay i::before{border-left-width:20px;border-top-width:12px;border-bottom-width:12px}
+ .ab-hero{min-height:0;padding:72px 0 88px;
+  background:linear-gradient(rgba(6,8,24,.8),rgba(6,8,24,.66)),#0a0d22 url(../assets/images/about-hero.webp) 78% center/cover no-repeat}
+ .ab-hero .ab-btns{margin-top:30px}
+ .ab-how,.ab-believe,.ab-video{padding:72px 0}
+ .ab-steps{grid-template-columns:1fr;gap:36px;margin-top:40px}
+ .ab-split-in{grid-template-columns:1fr}.ab-split figure{min-height:0;aspect-ratio:16/10}.ab-split-tx{padding:56px 24px;max-width:none}
+ .ab-believe-in{grid-template-columns:1fr;gap:28px}
+ .ab-row{grid-template-columns:1fr;gap:8px;padding:22px 0}
+ .ab-cta{padding:84px 0}.vplay i{width:64px;height:64px}
+ .vplay i::before{border-left-width:20px;border-top-width:12px;border-bottom-width:12px}
 }
