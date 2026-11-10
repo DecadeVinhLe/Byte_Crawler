@@ -20,6 +20,8 @@ document.querySelectorAll(".sub").forEach(function(b){b.onclick=function(){var r
  if(!r.err&&r.out.trim()==d.o){res.style.color="#16a34a";
   if(!S.done[cur]){S.done[cur]=1;S.xp+=50;save()}
   res.innerHTML='✓ Checkpoint cleared! +50 XP · Reward: '+d.r+(cur<L.length-1?' <button class="btn s nx" type="button" style="margin-left:8px">Next →</button>':' <button class="btn s nx" type="button" style="margin-left:8px">To the boss ☠</button>');
-  term($("out"),r.out);side();dash()}
+  term($("out"),r.out);side();dash();
+  /* bring the map into view so the learner sees the guide walk on */
+  var mp=$("map");if(mp)setTimeout(function(){var q=mp.getBoundingClientRect();if(q.top<0||q.bottom>innerHeight)mp.scrollIntoView({behavior:"smooth",block:"center"})},200)}
  else{res.style.color="#dc2626";res.textContent=r.err?r.err:"Not yet. Expected output: "+d.o.replace(/\n/g," ")}}});
 $("res").onclick=function(e){if(e.target.closest(".nx")){if(cur<L.length-1)lesson(cur+1);else location.hash="#boss"}};
