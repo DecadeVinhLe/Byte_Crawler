@@ -19,7 +19,7 @@ header.scrolled .top{opacity:0;visibility:hidden;transition:opacity .2s,visibili
 
 /* main bar */
 .bar{background:var(--bar);display:flex;align-items:center;padding:12px 24px;position:relative;border-bottom:4px solid var(--deep)}
-.logo{font:400 23px var(--px);color:#fff;letter-spacing:.06em;display:flex;align-items:center;gap:10px}.logo svg{image-rendering:pixelated;flex:none}
+.logo{font:400 28px var(--px);color:#ffd23f;text-transform:uppercase;letter-spacing:.1em;text-shadow:2px 2px 0 #14143a;display:flex;align-items:center;gap:10px}.logo svg{image-rendering:pixelated;flex:none}
 .nav{display:flex;gap:6px;margin:0 0 0 auto;padding:0;list-style:none;align-items:center}.nav>li{position:relative}
 .nav a,.j{font:400 17px var(--mono);text-transform:uppercase;color:#fff;background:var(--ink);border:2px solid var(--blue);border-radius:4px;padding:7px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .nav a:hover,.j:hover{background:#23234a}
