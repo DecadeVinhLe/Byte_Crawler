@@ -1,12 +1,12 @@
 /* Home page: hero, Make it easy, journey, ready-to-start, contact band */
 /* hero */
-.hero{background:var(--deep);position:relative;overflow:hidden;color:#fff;text-align:center;padding:96px 0 120px;
+.hero{background:var(--deep);position:relative;overflow:hidden;color:#fff;text-align:center;padding:225px 0 110px;
 background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px),radial-gradient(rgba(95,106,240,.5) 2px,transparent 2.1px);background-size:18px 18px,34px 34px;background-position:0 0,9px 9px}
 .hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;width:clamp(20px,6vw,64px);background:repeating-linear-gradient(#3b46e0 0 16px,#5f6af0 16px 32px);opacity:.9}
 .hero::before{left:0;border-right:8px solid #0e0e80}.hero::after{right:0;border-left:8px solid #0e0e80}
 .hero .in{position:relative;max-width:760px;margin:0 auto;padding:0 clamp(32px,8vw,90px)}
 .hero h1{font-size:clamp(44px,9.1vw,94px);text-shadow:4px 4px 0 var(--blue);letter-spacing:.03em}
-.hero p{margin:26px auto 34px;max-width:560px;font-size:23px;color:#dfe3ff}
+.hero p{text-shadow:2px 2px 0 #14146e;margin:26px auto 34px;max-width:560px;font-size:23px;color:#dfe3ff}
 @keyframes bob{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(var(--r)) translateY(-8px)}}
 .journey{background:var(--deep);color:#fff}.journey .lead{color:#c9cdf5}
 .journey .card{background:#12127f;border-color:#8a93ff;box-shadow:5px 5px 0 #0a0a55;color:#fff}.journey .card p{color:#c9cdf5}
@@ -19,12 +19,12 @@ background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px),
 .play{background:linear-gradient(#a9b6d8 0 18%,#9aa0dc 18% 30%,#5f6af0 30% 46%,#3b46e0 46% 64%,#2a1ca8 64% 82%,#4a55e0 82%)!important}
 .dialog{background:#e0ddd2!important}
 .hero .in{z-index:2}
-.hero .cb1,.hero .cb2{position:absolute;inset:0;z-index:1;pointer-events:none;image-rendering:pixelated;background-position:center;background-size:cover;background-repeat:no-repeat;animation:crownBlink 1.6s steps(1,end) infinite}
+.hero .cb1,.hero .cb2{position:absolute;inset:0;z-index:1;pointer-events:none;image-rendering:pixelated;background-position:center bottom;background-size:cover;background-repeat:no-repeat;animation:crownBlink 1.6s steps(1,end) infinite}
 .hero .cb1{background-image:url(../assets/images/crown-blink-1.png)}
 .hero .cb2{background-image:url(../assets/images/crown-blink-2.png);animation-delay:-.8s}
 @keyframes crownBlink{0%{opacity:1}50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.hero .cb1,.hero .cb2{animation:none;opacity:.6}}
-.hero{background:#1a1c9e url(../assets/images/hero-bg.png) center/cover no-repeat!important;image-rendering:pixelated}
+.hero{background:#1a1c9e url(../assets/images/hero-bg.png) center bottom/cover no-repeat!important;image-rendering:pixelated}
 .hero h1{font-family:"VT323",ui-monospace,monospace;font-weight:400;text-shadow:none;letter-spacing:.04em}
 .play{background:#2a22a4 url(../assets/images/play-bg.png) center/cover no-repeat!important;image-rendering:pixelated}
 .play::before{display:none!important}
