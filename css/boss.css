@@ -1,23 +1,23 @@
 /* Boss room: arena, HUD, hero picker, divisor helper */
 .bg2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
-.hud{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:12px;font:700 18px var(--mono)}.hud>div:first-child{flex:1}.hpb{margin-top:6px}.hpb b{background:#ff4d6d!important}
+.hud{display:flex;gap:18px;align-items:center;justify-content:space-between;margin-bottom:12px;font:400 18px var(--mono)}.hud>div:first-child{flex:1}.hpb{margin-top:6px}.hpb b{background:#ff4d6d!important}
 .hearts{color:#ff4d6d;font-size:31px;letter-spacing:2px}
 .arena{border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:#0a0f2e;line-height:0}.arena canvas{width:100%;height:auto;image-rendering:pixelated}.fb{line-height:1.5;padding:20px;color:#c9cdf5;font:17px var(--mono)}
 .blog{margin-top:16px;background:#04040f;color:#9aa2ff;font:17px/1.45 var(--mono);padding:12px 16px;min-height:120px;border:3px solid var(--ink)}.blog .x{color:#ff8fa3}.blog .g{color:#4ade80}
 #bed{display:block;width:100%;min-height:230px;margin:0;padding:16px;background:transparent;border:0;color:#e2e8f0;font:18px/1.45 var(--mono);resize:vertical;outline:0;white-space:pre}
 .ahero img.drb{inset:auto;right:5%;bottom:0;left:auto;top:auto;width:auto;height:88%;z-index:3;opacity:1;object-fit:contain}
 .ahero.bb .in{text-align:left;margin-left:max(24px,8%);max-width:520px}
-.cls{display:flex;gap:10px;margin-bottom:14px}.cls button{flex:1;display:grid;justify-items:center;gap:2px;font:700 17px var(--mono);color:var(--tx);background:var(--card);border:3px solid var(--line);padding:8px 4px;cursor:pointer}
+.cls{display:flex;gap:10px;margin-bottom:14px}.cls button{flex:1;display:grid;justify-items:center;gap:2px;font:400 17px var(--mono);color:var(--tx);background:var(--card);border:3px solid var(--line);padding:8px 4px;cursor:pointer}
 .cls button img{height:56px;width:auto;max-width:100%;image-rendering:pixelated;object-fit:contain}.cls button small{font:400 14px var(--mono);color:var(--mu)}.cls button.on{border-color:var(--blue);background:rgba(95,106,240,.16);box-shadow:3px 3px 0 var(--blue)}
 @media(max-width:620px){.ahero img.drb{height:50%;opacity:.5}}
 .cls button img{height:52px}
 .dxr{display:flex;gap:12px;align-items:end;margin-top:14px;flex-wrap:wrap}.dxr input{width:120px;padding:8px 10px}
-.dxo{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;font:700 17px var(--mono)}.dxo i{font-style:normal;background:var(--bar);color:#fff;padding:3px 9px;border:2px solid var(--ink)}.dxo em{font-style:normal;color:var(--mu)}
+.dxo{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;font:400 17px var(--mono)}.dxo i{font-style:normal;background:var(--bar);color:#fff;padding:3px 9px;border:2px solid var(--ink)}.dxo em{font-style:normal;color:var(--mu)}
 .dxs{flex-basis:100%;margin-top:6px}.dxs .g{color:#16803c}.dxs .x{color:#d62839}
 @media(max-width:1020px){.bg2{grid-template-columns:1fr}}
 
 /* Phase 2: "test it yourself" box */
 .tester{margin-top:16px;display:grid;gap:10px}
-.tester label{font:700 16px/1.4 var(--mono);text-transform:none;letter-spacing:.02em}
+.tester label{font:400 16px/1.4 var(--mono);text-transform:none;letter-spacing:.02em}
 .tester textarea{min-height:110px;font:18px/1.5 var(--mono);resize:vertical}
 .tester .tm{min-height:52px;white-space:pre-wrap}

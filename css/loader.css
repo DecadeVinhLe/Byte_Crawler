@@ -6,12 +6,12 @@ html.is-loading{overflow:hidden}
 .loader.done{opacity:0;visibility:hidden;pointer-events:none}
 .ld-in{position:relative;padding:24px;max-width:420px;width:100%}
 .ld-logo{display:block;margin:0 auto 18px;image-rendering:pixelated;animation:ldFloat 1s steps(2) infinite}
-.ld-title{margin:0;font:900 clamp(44px,10.4vw,68px)/1 "VT323",ui-monospace,monospace;letter-spacing:.04em}
+.ld-title{margin:0;font:400 clamp(44px,10.4vw,68px)/1 "VT323",ui-monospace,monospace;letter-spacing:.04em}
 .ld-sub{margin:10px 0 28px;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#c9cdf5}
 .ld-bar{display:flex;gap:4px;justify-content:center;padding:5px;border:4px solid #fff;background:#0a0a40;width:fit-content;margin:0 auto}
 .ld-bar i{width:14px;height:18px;background:#23236a}.ld-bar i.on{background:#ffd23f}
 .ld-msg{margin:14px 0 0;font-size:17px;color:#e3e6ff}.ld-msg b{color:#ffd23f;margin-left:6px}
-.ld-skip{position:absolute;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));font:700 16px "VT323",monospace;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:transparent;border:2px solid rgba(255,255,255,.6);padding:8px 14px;cursor:pointer;opacity:0;animation:ldIn .3s ease 1.2s forwards}
+.ld-skip{position:absolute;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));font:400 16px "VT323",monospace;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:transparent;border:2px solid rgba(255,255,255,.6);padding:8px 14px;cursor:pointer;opacity:0;animation:ldIn .3s ease 1.2s forwards}
 .ld-skip:hover{background:rgba(255,255,255,.15)}
 .ld-skip:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
 @keyframes ldFloat{50%{transform:translateY(-6px)}}
