@@ -1,7 +1,7 @@
 /* Design tokens: colours, fonts, light/dark themes */
 :root{--page:#eef1f6;--card:#fff;--tx:#14142b;--mu:#4b5075;--line:#14142b;--top:#eceef6;--toptx:#2c3566;
 --deep:#1a1ab0;--blue:#3b46e0;--bar:#5f6af0;--ink:#14142b;--play:#0a6cf0;--gold:#ffd23f;
---px:"Silkscreen","Press Start 2P",ui-monospace,monospace;--mono:"Space Mono",ui-monospace,Menlo,monospace;--ser:"IBM Plex Serif",Georgia,serif;
+--px:"VT323",ui-monospace,monospace;--mono:"VT323",ui-monospace,monospace;--ser:"VT323",ui-monospace,monospace;
 color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0c0c1f;--card:#16163a;--tx:#eef0ff;--mu:#a9aee0;--line:#5f6af0;--top:#2a2a2e;--toptx:#c9cdf5;color-scheme:dark}}
 :root[data-theme="dark"]{--page:#0c0c1f;--card:#16163a;--tx:#eef0ff;--mu:#a9aee0;--line:#5f6af0;--top:#2a2a2e;--toptx:#c9cdf5;color-scheme:dark}
