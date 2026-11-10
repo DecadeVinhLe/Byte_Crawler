@@ -21,3 +21,42 @@
 .tester label{font:400 16px/1.4 var(--mono);text-transform:none;letter-spacing:.02em}
 .tester textarea{min-height:110px;font:18px/1.5 var(--mono);resize:vertical}
 .tester .tm{min-height:52px;white-space:pre-wrap}
+
+/* right column: quest, then terminal, then guide */
+.bg2>div:last-child{display:flex;flex-direction:column;gap:18px}
+#q1,#q2{display:contents}#q1[hidden],#q2[hidden]{display:none}
+#q1>.card:first-child,#q2>.card:first-child{order:1}
+.bg2>div:last-child>.dock{order:2}
+#q1>.card+.card,#q2>.card+.card{order:3}
+.bg2>div:last-child .card{margin-top:0!important}
+
+.dk-t{display:none}
+/* phone: terminal docks at the bottom so quest and code are on screen together */
+@media(max-width:760px){
+ .dock{position:sticky;bottom:0;z-index:20;background:var(--page);border-top:3px solid var(--ink);padding:6px 10px 10px;margin:0 -10px;max-height:50vh;overflow:auto}
+ .dk-t{display:block;width:100%;text-align:left;font:400 17px var(--mono);color:var(--tx);background:none;border:0;padding:2px 0 6px;cursor:pointer}
+ .dock .ide{box-shadow:none}
+ .dock #bed,.dock #ed,.dock #sb{height:18vh;min-height:90px}
+ .dock .row3{margin-top:10px}
+ .dock.shut>*:not(.dk-t){display:none}.dock.shut{padding-bottom:4px}
+}
+
+/* terminal: wrap long lines, keep inside the screen on phones */
+.ide{max-width:100%;min-width:0}
+.ide textarea,.tm{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
+.ide textarea{overflow-x:hidden;tab-size:4}
+@media(max-width:760px){
+ .dock{box-sizing:border-box;max-width:calc(100% + 20px)}
+ .ide,.ide textarea{font-size:16px;line-height:1.4}
+ .ide textarea{padding:10px 12px}
+ .tm{font-size:15px;padding:8px 12px;min-height:44px;max-height:20vh;overflow:auto}
+ .itop{padding:8px 12px;font-size:14px}
+ .dock .row3{gap:10px;flex-wrap:nowrap}.dock .row3 .btn{flex:1;min-width:0;padding:11px 8px;font-size:16px;text-align:center}
+ .dock #bed,.dock #ed,.dock #sb{height:16vh}
+}
+@media(max-width:360px){.dock .row3 .btn{font-size:14px}}
+#ed,#bed,#sb{white-space:pre-wrap!important;overflow-wrap:anywhere;overflow-x:hidden}
+@media(max-width:1020px){.bg2{grid-template-columns:minmax(0,1fr)}}
+.cls button{min-width:0}
+@media(max-width:400px){.cls{gap:6px}.cls button{padding:6px 2px;font-size:15px}.cls small{display:none}.cls img{max-width:100%}}
+#sb{display:block;background:transparent;border:0;color:inherit;font:inherit;line-height:1.6;min-height:200px;padding:16px;resize:vertical;outline:0;margin:0}

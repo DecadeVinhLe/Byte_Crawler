@@ -46,8 +46,8 @@
 
 <main>
 <div class="pg" id="home">
-<div class="hero"><i class="cb1" aria-hidden="true"></i><i class="cb2" aria-hidden="true"></i><div class="in">
-  <h1>Easy as speaking English</h1>
+<div class="hero"><canvas class="snow" id="snow" aria-hidden="true"></canvas><div class="in">
+  <div class="crownbox"><i class="cb1" aria-hidden="true"></i><i class="cb2" aria-hidden="true"></i><h1>Easy as speaking English</h1></div>
   <p>Learning to code is not as complicated or inaccessible as we might think. At ByteCrawler, we aim to create a platform where coding is accessible to everyone, just like learning English.</p>
 </div></div>
 
@@ -122,7 +122,7 @@
  <div class="mb"><b class="lh" style="margin:0">Math theory</b><p id="mth"></p><p id="ex" style="margin-top:8px;font-weight:500"></p></div>
  <div id="ez2"></div>
 </article>
-<div><div class="ide"><div class="itop"><i></i><i></i><i></i><span>checkpoint.py</span></div>
+<div class="dock"><button type="button" class="dk-t" aria-expanded="true">▾ Hide code</button><div class="ide"><div class="itop"><i></i><i></i><i></i><span>checkpoint.py</span></div>
  <textarea id="ed" spellcheck="false" aria-label="Code editor"></textarea><div class="tm" id="out"><b>▸</b> Terminal ready</div></div>
  <div class="row3"><button class="btn run" type="button">▶ Run</button><button class="btn g sub" type="button">Submit +50 XP</button></div><div class="res" id="res"></div></div>
 </div></div></section>
@@ -138,9 +138,9 @@
  <div class="blog" id="blog" aria-live="polite">Write the code, then press Attack. Each correct round hits the boss.</div>
 </div>
 <div>
- <div class="ide" style="margin-top:0"><div class="itop"><i></i><i></i><i></i><span>boss_fight.py</span></div><textarea id="bed" spellcheck="false" aria-label="Boss fight code"></textarea></div>
+ <div class="dock"><button type="button" class="dk-t" aria-expanded="true">▾ Hide code</button><div class="ide" style="margin-top:0"><div class="itop"><i></i><i></i><i></i><span>boss_fight.py</span></div><textarea id="bed" spellcheck="false" aria-label="Boss fight code"></textarea></div>
  <div class="row3"><button class="btn" id="batk" type="button">⚔ Attack</button><button class="btn g" id="bhint" type="button">Hint</button></div>
- <div class="mb" id="bh" hidden style="margin-top:16px"></div>
+ <div class="mb" id="bh" hidden style="margin-top:16px"></div></div>
 <div style="height:18px"></div>
 <div id="q1">
 <div class="card"><span class="n">QUEST</span><h3 style="margin:10px 0 8px;font-size:22px">Is this 4-digit number perfect?</h3>
@@ -208,7 +208,7 @@
 </div>
 <div class="two" style="margin-top:28px;align-items:start">
 <div class="card"><h3 style="font-size:21px">Modules &amp; rewards</h3><div id="dmods" class="dm"></div></div>
-<div><div class="ide"><div class="itop"><i></i><i></i><i></i><span>sandbox.py</span></div><textarea id="sb" spellcheck="false" aria-label="Sandbox editor"></textarea><div class="tm" id="sbo"><b>▸</b> Sandbox ready</div></div>
+<div class="dock"><button type="button" class="dk-t" aria-expanded="true">▾ Hide code</button><div class="ide"><div class="itop"><i></i><i></i><i></i><span>sandbox.py</span></div><textarea id="sb" spellcheck="false" aria-label="Sandbox editor"></textarea><div class="tm" id="sbo"><b>▸</b> Sandbox ready</div></div>
 <div class="row3"><button class="btn" id="sbrun" type="button">▶ Run sandbox</button><button class="btn g" id="sbrst" type="button">Reset</button></div></div>
 </div></div></section>
 </div>
@@ -232,6 +232,8 @@
 <script src="js/dashboard.js"></script>
 <script src="js/boss.js"></script>
 <script src="js/arena.js"></script>
+<script src="js/snow.js"></script>
+<script src="js/dock.js"></script>
 <script src="js/router.js"></script>
 <script src="js/about.js"></script>
 <script src="js/community.js"></script>
