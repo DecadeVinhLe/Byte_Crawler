@@ -127,12 +127,13 @@
 <div class="map" id="map"><img id="mapimg" alt="Pixel dungeon map with checkpoints"><svg id="route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><button type="button" class="py" id="py" aria-label="A friendly Python snake guide waits at your current checkpoint and moves on when you clear it. Click for a Python tip." hidden></button><div id="mks"></div><div class="pyb" id="pyb" role="status" hidden></div></div>
 <div class="cg">
 <aside class="card side">
+ <a class="btn lesbtn" href="#lesson">📖 Read the lesson</a>
  <div class="sh"><b>Progress</b><span id="xpt">0 XP</span></div><div class="pbar"><b id="pb"></b></div><div class="mu2" id="pt"></div>
  <div id="tree"></div>
  <div class="chal" id="challenge"></div>
  <div class="r2"><button class="btn s run" type="button">▶ Run</button><button class="btn s g sub" type="button">Submit</button></div>
 </aside>
-<article class="card les"><span class="n" id="lno"></span><h3 id="lt" style="font-size:29px;margin:12px 0 4px"></h3>
+<span id="lesHome" hidden></span><article class="card les"><span class="n" id="lno"></span><h3 id="lt" style="font-size:29px;margin:12px 0 4px"></h3>
  <div id="ez"></div>
  <details class="fold" open><summary>Key terms</summary><dl id="terms"></dl></details>
  <details class="fold" open><summary>Python concept</summary><p id="plain"></p></details>
@@ -145,6 +146,9 @@
 </div></div></section>
 </div>
 
+<div class="pg" id="lesson">
+<section class="sec"><div class="wrap lw"><a class="btn s lback" href="#course">← Back to checkpoint</a><div id="lesBox"></div><a class="btn lback" href="#course">▶ Back to the code</a></div></section>
+</div>
 <div class="pg" id="boss">
 <div class="ahero bb"><img data-k="ruins" alt="" aria-hidden="true"><img class="drb" data-k="dragon" alt="" aria-hidden="true"><div class="in"><span class="tag">BOSS ROOM · PROBLEM SOLVING</span><h1>The Perfect Number Wyrm</h1><p>It guards every 4-digit number and says only one of them is perfect. Prove it with code.</p></div></div>
 <section class="sec" style="padding-top:48px"><div class="wrap"><div class="bg2">

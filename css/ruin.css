@@ -18,7 +18,7 @@
 .tc.r::before{animation-duration:1.5s}
 @keyframes flame{to{background-position:-192px 0}}
 @keyframes glow{from{opacity:.65}to{opacity:1}}
-@media(max-width:620px){.tc{top:-132px}.tc.l{left:10%}.tc.r{right:10%}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px}}
+@media(max-width:620px){.tc{display:none}.tc{top:-132px}.tc.l{left:10%}.tc.r{right:10%}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px}}
 @media(prefers-reduced-motion:reduce){.tc i,.tc::before,.play::after{animation:none}}
 
 /* one clean rim between hero and Make It Easy (no double line) */

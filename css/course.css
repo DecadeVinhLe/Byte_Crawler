@@ -76,3 +76,12 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
  .wo{font-size:17px;line-height:1.3}
 }
 @media(max-width:760px){.an b{font-weight:400;color:var(--tx)}}
+
+/* lesson on its own page (phones) */
+.lesbtn{display:none}
+@media(max-width:760px){
+ .lesbtn{display:block;text-align:center;margin-bottom:12px}
+ .lw{display:grid;gap:14px;padding-top:6px;padding-bottom:28px}
+ .lback{text-align:center}
+ .fold>summary{pointer-events:none}.fold>summary::after,.fold[open]>summary::after{content:""}
+}
