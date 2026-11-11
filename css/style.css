@@ -1,6 +1,6 @@
 :root{--page:#eef1f6;--card:#fff;--tx:#14142b;--mu:#4b5075;--line:#14142b;--top:#eceef6;--toptx:#2c3566;
 --deep:#0511f2;--blue:#3d46f2;--bar:#5c64f2;--ink:#14142b;--play:#0a6cf0;--gold:#ffd23f;
---px:"Silkscreen","Press Start 2P",ui-monospace,monospace;--mono:"Space Mono",ui-monospace,Menlo,monospace;--ser:"IBM Plex Serif",Georgia,serif;
+--px:"VT323",ui-monospace,monospace;--mono:"VT323",ui-monospace,monospace;--ser:"VT323",ui-monospace,monospace;
 color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0c0c1f;--card:#16163a;--tx:#eef0ff;--mu:#a9aee0;--line:#5c64f2;--top:#2a2a2e;--toptx:#c9cdf5;color-scheme:dark}}
 :root[data-theme="dark"]{--page:#0c0c1f;--card:#16163a;--tx:#eef0ff;--mu:#a9aee0;--line:#5c64f2;--top:#2a2a2e;--toptx:#c9cdf5;color-scheme:dark}
@@ -204,7 +204,7 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
 
 /* ===== Your pixel designs ===== */
 .hero{background:#1a1c9e url(../assets/images/hero-bg.png) center/cover no-repeat!important;image-rendering:pixelated}
-.hero h1{font-family:"Doto","Silkscreen",ui-monospace,monospace;font-weight:900;text-shadow:none;letter-spacing:.04em}
+.hero h1{font-family:"VT323",ui-monospace,monospace;font-weight:900;text-shadow:none;letter-spacing:.04em}
 .play{background:#2a22a4 url(../assets/images/play-bg.png) center/cover no-repeat!important;image-rendering:pixelated}
 .play::before{display:none!important}
 .tvs{padding:70px 0;background:var(--page)}
@@ -214,7 +214,7 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
 .tv-f{position:absolute;inset:0;background:url(../assets/images/tv-frame.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;pointer-events:none}
 .tv-t{position:relative;z-index:2;color:#fff;text-align:left}
 .tv-t h2{font:400 clamp(40px,6.5vw,66px)/.95 "VT323",var(--px);text-transform:none;letter-spacing:.06em}
-.tv-t p{margin-top:20px;max-width:380px;font:700 clamp(13px,1.9vw,17px)/1.55 "VT323","Space Mono",monospace;letter-spacing:.04em;text-shadow:1px 1px 0 rgba(0,0,0,.35)}
+.tv-t p{margin-top:20px;max-width:380px;font:700 clamp(13px,1.9vw,17px)/1.55 "VT323",monospace;letter-spacing:.04em;text-shadow:1px 1px 0 rgba(0,0,0,.35)}
 .mis{position:relative;padding:70px 0 86px;background:#2a2fd0 url(../assets/images/mission-bg.png) center/cover no-repeat;image-rendering:pixelated}
 .mis::after{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:rgba(20,20,120,.4)}
 .mis-in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,280px) minmax(0,280px);gap:0;justify-content:center;align-items:stretch}
@@ -230,7 +230,7 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
 @media(max-width:960px) and (min-width:761px){.vva-g{grid-template-columns:1fr 1fr}.vc.c{grid-column:1/-1}}
 @media(max-width:760px){.mis-in{grid-template-columns:1fr}.mis-code{min-height:240px;max-height:300px}.vva-g{grid-template-columns:1fr}.tv-t p{max-width:none}}
 /* Contact page: friendlier heading font */
-#contact h2{font:900 clamp(40px,7vw,68px)/1 "Doto","Silkscreen",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em;color:#ffd23f;text-shadow:none;display:inline-block;padding-bottom:8px;border-bottom:3px solid #4fb3ff}
+#contact h2{font:900 clamp(40px,7vw,68px)/1 "VT323",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em;color:#ffd23f;text-shadow:none;display:inline-block;padding-bottom:8px;border-bottom:3px solid #4fb3ff}
 
 /* Python in the dungeon */
 .py{position:absolute;left:0;top:0;z-index:3;width:clamp(44px,6.4vw,70px);padding:0;border:0;background:none;cursor:pointer;image-rendering:pixelated;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.45));transform:translate(-50%,-80%)}

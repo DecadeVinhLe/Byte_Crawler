@@ -9,7 +9,7 @@
 .ab-hero{padding:40px 0 72px}
 .crt{position:relative;width:min(100%,520px);margin:0 auto;container-type:inline-size}
 .crt img{display:block;width:100%;height:auto;image-rendering:pixelated}
-.crt-scr{position:absolute;left:11.9%;top:11.3%;width:75.2%;height:58.4%;padding:7% 6.5%;border-radius:2.6%;overflow:hidden;
+.crt-scr{position:absolute;left:12%;top:11.5%;width:75%;height:58.2%;padding:7% 6.5%;border-radius:2.6%;overflow:hidden;
  background:radial-gradient(ellipse 55% 55% at 38% 42%,#5862e8 0%,#3340dc 45%,#2230cf 100%),#2a36d6}
 .crt-scr::before{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.22) 1px,transparent 1.2px) 0 0/4px 4px;pointer-events:none}
 .crt-scr>*{position:relative}

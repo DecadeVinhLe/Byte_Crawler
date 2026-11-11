@@ -32,6 +32,10 @@ function markCurrent(){var h=location.hash||"#home",inMenu=false;
   document.querySelectorAll(".nav a,.ico a,.top a").forEach(function(a){var on=a.getAttribute("href")==h;
     if(on){a.setAttribute("aria-current","page");if(a.closest(".menu"))inMenu=true}else a.removeAttribute("aria-current")});
   jb.classList.toggle("on",inMenu)}
+/* A fresh load or refresh always starts on Home */
+try{history.scrollRestoration="manual"}catch(e){}
+if(location.hash&&location.hash!="#all")history.replaceState(null,"",location.pathname+location.search);
+addEventListener("pageshow",function(e){if(e.persisted&&location.hash&&location.hash!="#all"){history.replaceState(null,"",location.pathname+location.search);if(window.route)route();markCurrent();scrollTo(0,0)}});
 addEventListener("hashchange",function(){markCurrent();menu(false)});markCurrent();
 
 /* ---- RoboNation-style scroll: the utility strip slides away and its links return as icons in the bar.
