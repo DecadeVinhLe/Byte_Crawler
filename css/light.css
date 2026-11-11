@@ -8,3 +8,6 @@
 :root[data-theme="light"] .ab-mbox .ab-eye{color:#3d46f2;text-shadow:none}
 :root[data-theme="light"] .ab-card b{background:#0511f2;color:#fff}
 :root[data-theme="light"] .ab-tags li,:root[data-theme="light"] .ab-chips li{background:#dcd8cb!important;color:#14143a!important;border-color:#0511f2!important;box-shadow:3px 3px 0 #14143a}
+
+/* iPad and small laptops: four fact columns are too narrow, use two */
+@media(max-width:1180px){.hero-facts{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px!important;width:min(100%,900px)!important;left:auto!important;transform:none!important;margin-left:auto;margin-right:auto;grid-template-rows:none!important}.hero-facts li{grid-row:auto!important;grid-template-rows:none!important}}

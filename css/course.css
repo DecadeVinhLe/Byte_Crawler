@@ -112,3 +112,12 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
  #lesson .lback:last-child{position:sticky;bottom:10px;z-index:5}
 }
 @media(max-width:760px){.side .r2{display:none}}
+
+/* iPad portrait and small tablets: lesson on the left, the code editor stays in view on the right while you read */
+@media(min-width:761px) and (max-width:1020px){
+ .cg{gap:18px}
+ .cg>.dock{position:sticky;top:86px;align-self:start;max-height:calc(100vh - 100px);overflow:auto}
+ .les{font-size:20px}
+}
+/* big iPad landscape and small laptops */
+@media(min-width:1021px) and (max-width:1200px){.cg{grid-template-columns:220px minmax(0,1fr) minmax(0,1fr);gap:16px}.side{top:110px}}
