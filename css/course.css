@@ -85,3 +85,16 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
  .lback{text-align:center}
  .fold>summary{pointer-events:none}.fold>summary::after,.fold[open]>summary::after{content:""}
 }
+
+/* Lesson page (phones): text wraps inside one box; sticky bar jumps back to Progress or Terminal */
+.lbar{display:none}
+@media(max-width:760px){
+ .lw{grid-template-columns:minmax(0,1fr)}
+ #lesBox,#lesBox .les{width:100%;min-width:0}
+ .les{padding:18px 16px;text-align:left}
+ .les,.les *{overflow-wrap:anywhere;min-width:0}
+ .les .cb{white-space:pre-wrap;overflow-x:hidden}
+ .les .ezs,.les .stp,.les dl,.les p{max-width:100%}
+ .lbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:30;padding:10px;background:var(--page);border:3px solid var(--line);box-shadow:4px 4px 0 var(--line)}
+ .lbar .btn{width:100%;padding:12px 8px;text-align:center}
+}

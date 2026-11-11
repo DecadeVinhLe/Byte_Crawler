@@ -7,3 +7,10 @@ document.querySelectorAll(".dk-t").forEach(function(b){b.onclick=function(){
  function place(){if(mq.matches){box.appendChild(les)}else{home.parentNode.insertBefore(les,home.nextSibling);if(location.hash=='#lesson')location.hash='#course'}
   les.querySelectorAll('.fold').forEach(function(f){f.open=true})}
  place();(mq.addEventListener?mq.addEventListener('change',place):mq.addListener(place))})();
+
+/* lesson page (phones): jump back to the progress list or the terminal on the Learning path page */
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();var to=b.getAttribute('data-go');
+ function go(){var dk=document.querySelector('.dock');
+  if(to==='terminal'){if(dk.classList.contains('shut'))dk.querySelector('.dk-t').click();dk.scrollIntoView({block:'end'})}
+  else{var sd=document.querySelector('.side');if(sd)sd.scrollIntoView({block:'start'})}}
+ if(location.hash==='#course'){go()}else{location.hash='#course';setTimeout(go,80)}})});
