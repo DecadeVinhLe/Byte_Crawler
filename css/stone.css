@@ -1,0 +1,36 @@
+/* Home: dark stone theme (one 5-colour palette from the stone-gate art).
+   Rule of thumb: art lives in the background, words live on dark panels, so text is always easy to read.
+   Palette: navy #0d0e26, slate #303359, steel #3f6f8c, cyan #65ced8 (borders), pale #d3dae8 (text), gold #FFD23F (small accents). */
+:root{--st-edge:#65ced8;--st-panel:rgba(9,10,34,.88);--st-ink:#05051a;--st-text:#e6eef4;--st-sub:#c3d0dc}
+
+/* 1. Hero: stone gate, one focus panel for the title, one panel for the four facts */
+.hero{background:linear-gradient(rgba(6,8,30,.30),rgba(6,8,30,.58)),#0d0e26 url(../assets/images/stone-gate.png) center/cover no-repeat!important;image-rendering:pixelated;min-height:0;padding:72px 0 80px}
+.hero::after{background:var(--st-edge)}
+.hero:has(.hero-facts)::before{background:linear-gradient(0deg,rgba(6,8,30,.55) 0%,rgba(6,8,30,0) 55%)}
+.hero-focus{position:relative;max-width:780px;margin:0 auto;padding:30px 38px 34px;background:var(--st-panel);border:3px solid var(--st-edge);box-shadow:6px 6px 0 var(--st-ink)}
+.hero-focus h1{font-size:clamp(52px,8.5vw,96px);color:#fff;text-shadow:3px 3px 0 var(--st-ink)}
+.hero-focus p{margin:18px auto 0;max-width:600px;color:var(--st-text);text-shadow:none}
+.hero-facts{margin-top:34px;padding:26px 30px 30px;background:var(--st-panel);border:3px solid var(--st-edge);box-shadow:6px 6px 0 var(--st-ink)}
+.hero-facts b{text-shadow:none;color:#fff}
+.hero-facts span{text-shadow:none;color:var(--st-sub)}
+.hero-facts li{border-top-color:#FFD23F}
+
+/* 2. Make It Easy: stone wall, diamond rims top and bottom, text on one panel */
+.easy{background:linear-gradient(rgba(6,8,30,.74),rgba(8,10,34,.88)),#0d0e26 url(../assets/images/stone-wall.png) 0 0/480px 288px repeat;image-rendering:pixelated;color:var(--st-text);padding:104px 0}
+.easy::before,.easy::after{content:"";position:absolute;left:0;right:0;height:30px;z-index:3;pointer-events:none;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpolygon points='15,2 28,15 15,28 2,15' fill='%23d3dae8' stroke='%2365ced8' stroke-width='2'/%3E%3Cpolygon points='15,8 22,15 15,22 8,15' fill='%233f6f8c'/%3E%3C/svg%3E") center/30px 30px no-repeat,linear-gradient(#65ced8,#65ced8) center/100% 4px no-repeat}
+.easy::before{top:0}.easy::after{bottom:0}
+.easy-txt{position:relative;background:var(--st-panel);border:3px solid var(--st-edge);box-shadow:6px 6px 0 var(--st-ink);padding:34px 38px 40px}
+.easy-txt h2{color:#fff;-webkit-text-stroke:0;text-shadow:3px 3px 0 var(--st-ink)}
+.easy-lead{color:var(--st-text)}
+.easy-list li{color:var(--st-sub)}
+.easy-list li::before{border-color:var(--st-ink)}
+.easy-video{border-color:var(--st-edge);box-shadow:6px 6px 0 var(--st-ink)}
+.ev-cap{color:var(--st-sub)}
+
+/* 3. Ready to start: the stone doorway, with the call to action on a panel at its feet */
+.play{display:flex;align-items:flex-end;justify-content:center;min-height:clamp(520px,72vh,720px);padding:0 0 64px;
+ background:linear-gradient(rgba(6,8,30,.05) 0%,rgba(6,8,30,.6) 100%),#0d0e26 url(../assets/images/stone-door.png) center bottom/cover no-repeat!important;image-rendering:pixelated}
+.play .dialog{width:min(420px,calc(100% - 32px));max-width:none;margin:0 auto;background:var(--st-panel)!important;color:#fff;border:3px solid var(--st-edge);box-shadow:6px 6px 0 var(--st-ink)}
+.play .dialog h2{color:#fff}
+@media(max-width:860px){.hero{padding:56px 0 64px}.hero-focus{padding:24px 22px 28px}.hero-facts{padding:22px 22px 26px}.easy{padding:0 0 64px}.easy-txt{padding:26px 22px 30px}.play{min-height:460px;padding-bottom:40px}}
