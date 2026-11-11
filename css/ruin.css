@@ -19,7 +19,9 @@
 @keyframes flame{to{background-position:-192px 0}}
 @keyframes glow{from{opacity:.65}to{opacity:1}}
 /* phones: show only the flame and stick (top 23 of 40 sprite rows), no stone base */
-@media(max-width:760px){.tc{display:block;height:92px;top:-84px}.tc.l{left:14px}.tc.r{right:14px}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px;top:10%}}
+/* phones: the torches hang on the two lit stone panels beside the door. They are placed from the centre of the
+   section (not the dialog edges) because the panels are part of the background art and always sit 148px either side of it. */
+@media(max-width:760px){.tc{display:block;height:92px;top:-134px}.tc.l{left:50%;right:auto;margin-left:-180px}.tc.r{left:50%;right:auto;margin-left:116px}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px;top:10%}}
 @media(prefers-reduced-motion:reduce){.tc i,.tc::before,.play::after{animation:none}}
 
 /* one clean rim between hero and Make It Easy (no double line) */
