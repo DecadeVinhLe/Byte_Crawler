@@ -48,7 +48,7 @@
 
 <main>
 <div class="pg" id="home">
-<div class="hero"><i class="rn" aria-hidden="true"></i><div class="in">
+<div class="hero"><div class="in">
   <div class="hero-focus">
     <h1>Easy as speaking English</h1>
     <p>Learning to code is not as complicated or inaccessible as we might think. At ByteCrawler, we aim to create a platform where coding is accessible to everyone, just like learning English.</p>
@@ -62,7 +62,6 @@
 </div></div>
 
 <section class="easy" id="easy">
-  <i class="rn" aria-hidden="true"></i>
   <div class="easy-art" aria-hidden="true">
     <img class="es-sword" src="assets/images/easy-sword.png" alt="">
     <img class="es-heart" src="assets/images/easy-heart.png" alt="">
@@ -88,7 +87,7 @@
   </div>
 </section>
 
-<section class="play" id="play"><i class="rn" aria-hidden="true"></i><div class="dialog"><span class="tc l" aria-hidden="true"><i></i></span><span class="tc r" aria-hidden="true"><i></i></span><h2>Ready to start?</h2><a class="btn" href="#course">Play</a></div></section>
+<section class="play" id="play"><div class="dialog"><span class="tc l" aria-hidden="true"><i></i></span><span class="tc r" aria-hidden="true"><i></i></span><h2>Ready to start?</h2><a class="btn" href="#course">Play</a></div></section>
 </div>
 <div class="pg" id="about">
 <!-- Hero: retro monitor. Edit the text on the screen here. -->
@@ -135,9 +134,9 @@
 </aside>
 <article class="card les"><span class="n" id="lno"></span><h3 id="lt" style="font-size:29px;margin:12px 0 4px"></h3>
  <div id="ez"></div>
- <div class="lh">Key terms</div><dl id="terms"></dl>
- <div class="lh">Python concept</div><p id="plain"></p>
- <div class="mb"><b class="lh" style="margin:0">Math theory</b><p id="mth"></p><p id="ex" style="margin-top:8px;font-weight:500"></p></div>
+ <details class="fold" open><summary>Key terms</summary><dl id="terms"></dl></details>
+ <details class="fold" open><summary>Python concept</summary><p id="plain"></p></details>
+ <details class="fold mb" open><summary>Math theory</summary><p id="mth"></p><p id="ex" style="margin-top:8px;font-weight:500"></p></details>
  <div id="ez2"></div>
 </article>
 <div class="dock"><button type="button" class="dk-t" aria-expanded="true">▾ Hide code</button><div class="ide"><div class="itop"><i></i><i></i><i></i><span>checkpoint.py</span></div>

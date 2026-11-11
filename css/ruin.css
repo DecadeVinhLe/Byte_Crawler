@@ -1,17 +1,8 @@
 /* Abandoned-dungeon dressing: moss, vines, cracks, cobwebs, and torches at the entrance.
-   Every effect is a separate transparent layer (.rn) on top of the section art, so any background keeps working. */
+   Every effect is a separate transparent layer. */
 .hero,.easy,.play{position:relative}
 .hero>.in,.easy>.wrap,.play>.dialog{position:relative;z-index:2}
-.rn{opacity:.6;position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;image-rendering:pixelated;
- background:
-  url(../assets/images/ruin-vines.png) 0 4px/640px auto repeat-x,
-  url(../assets/images/ruin-floor.png) 0 100%/768px auto repeat-x,
-  url(../assets/images/ruin-wall.png) 0 0/576px 576px repeat}
-.rn::before,.rn::after{content:"";position:absolute;top:0;width:110px;height:110px;background:url(../assets/images/ruin-web.png) 0 0/100% 100% no-repeat;image-rendering:pixelated;opacity:.5}
-.rn::before{left:0}.rn::after{right:0;transform:scaleX(-1)}
-.easy .rn{background-position:0 4px,0 100%,0 0}
-.hero .rn{background:url(../assets/images/ruin-vines.png) 0 0/640px auto repeat-x}
-/* the hero panels sit on top of the vines; text stays on its dark panel */
+.hero>.in,.easy>.wrap,.play>.dialog{position:relative;z-index:2}
 
 /* Entrance: two torches flank the door panel and light the floor */
 .play{overflow:hidden}
@@ -27,7 +18,7 @@
 .tc.r::before{animation-duration:1.5s}
 @keyframes flame{to{background-position:-192px 0}}
 @keyframes glow{from{opacity:.65}to{opacity:1}}
-@media(max-width:620px){.tc{top:-132px}.tc.l{left:10%}.tc.r{right:10%}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px}.rn::before,.rn::after{width:70px;height:70px}}
+@media(max-width:620px){.tc{top:-132px}.tc.l{left:10%}.tc.r{right:10%}.tc::before{width:240px;height:240px;margin:-120px 0 0 -120px}}
 @media(prefers-reduced-motion:reduce){.tc i,.tc::before,.play::after{animation:none}}
 
 /* one clean rim between hero and Make It Easy (no double line) */
