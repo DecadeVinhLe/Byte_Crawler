@@ -1,0 +1,10 @@
+/* Light mode: backgrounds stay exactly as in dark mode; only the content blocks (panels) turn warm paper #dcd8cb with blue ink */
+:root[data-theme="light"] .hero-focus,:root[data-theme="light"] .hero-facts,:root[data-theme="light"] .easy-txt,:root[data-theme="light"] .ab-mbox,:root[data-theme="light"] .ab-card,:root[data-theme="light"] .play .dialog{background:#dcd8cb!important;border:3px solid #0511f2!important;box-shadow:6px 6px 0 #14143a!important;color:#14143a}
+:root[data-theme="light"] .hero-focus h1,:root[data-theme="light"] .easy-txt h2,:root[data-theme="light"] .ab-mbox .ab-h,:root[data-theme="light"] .ab-card h3,:root[data-theme="light"] .play .dialog h2{color:#0511f2;-webkit-text-stroke:0;text-shadow:3px 3px 0 rgba(20,20,58,.16)}
+:root[data-theme="light"] .hero-focus p,:root[data-theme="light"] .easy-lead,:root[data-theme="light"] .easy-list li,:root[data-theme="light"] .hero-facts span,:root[data-theme="light"] .ab-mbox>p,:root[data-theme="light"] .ab-card p{color:#2c3170;text-shadow:none}
+:root[data-theme="light"] .hero-facts b{color:#14143a;text-shadow:none}
+:root[data-theme="light"] .hero-facts li{border-top-color:#0511f2}
+:root[data-theme="light"] .easy-list li::before{border-color:#14143a;box-shadow:3px 3px 0 #14143a}
+:root[data-theme="light"] .ab-mbox .ab-eye{color:#3d46f2;text-shadow:none}
+:root[data-theme="light"] .ab-card b{background:#0511f2;color:#fff}
+:root[data-theme="light"] .ab-tags li,:root[data-theme="light"] .ab-chips li{background:#dcd8cb!important;color:#14143a!important;border-color:#0511f2!important;box-shadow:3px 3px 0 #14143a}
