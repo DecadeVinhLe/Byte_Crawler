@@ -14,3 +14,7 @@ document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('c
   if(to==='terminal'){if(dk.classList.contains('shut'))dk.querySelector('.dk-t').click();dk.scrollIntoView({block:'end'})}
   else{var sd=document.querySelector('.side');if(sd)sd.scrollIntoView({block:'start'})}}
  if(location.hash==='#course'){go()}else{location.hash='#course';setTimeout(go,80)}})});
+
+/* keep the course page clear of the fixed bottom dock */
+(function(){var dk=document.querySelector(".cg>.dock"),pg=document.getElementById("course");if(!dk||!pg||!window.ResizeObserver)return;
+ new ResizeObserver(function(){pg.style.setProperty("--dkh",dk.offsetHeight+"px")}).observe(dk)})();

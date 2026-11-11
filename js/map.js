@@ -32,7 +32,12 @@ function map(){var M=MAPS.A,pts=M.pos.concat([M.door]),all=nDone()>=L.length,im=
 
  function face(d){for(var i=0;i<seg.length;i++){if(d<=cum[i+1]||i==seg.length-1)return pts[i+1][0]<pts[i][0]}return false}
  function say(h){bub.innerHTML=h;bub.hidden=false;place();clearTimeout(hideT);hideT=setTimeout(function(){bub.hidden=true},4200)}
- function place(){if(bub.hidden)return;bub.style.left=pyEl.style.left;bub.style.top="calc("+pyEl.style.top+" - "+(pyEl.offsetHeight*.9+14)+"px)"}
+ function place(){if(bub.hidden)return;
+  /* keep the bubble inside the map: clamp sideways, flip below the guide when there is no room above */
+  var W=mapEl.clientWidth,x=pyEl.offsetLeft,y=pyEl.offsetTop,bw=bub.offsetWidth,bh=bub.offsetHeight,h=pyEl.offsetHeight,m=6;
+  var l=Math.max(bw/2+m,Math.min(W-bw/2-m,x));bub.style.left=l+"px";bub.style.setProperty("--ax",Math.max(-bw/2+14,Math.min(bw/2-14,x-l))+"px");
+  var up=y-h*.8-14-bh>=m;
+  if(up){bub.classList.remove("dn");bub.style.top=(y-h*.8-14)+"px"}else{bub.classList.add("dn");bub.style.top=(y+h*.2+14)+"px"}}
 
  function arrive(i){say(i<L.length?"Checkpoint "+(i+1)+": "+L[i].t+". Your turn!":"The boss door is open! Click it if you dare.")}
  function tick(){if(document.hidden||!mapEl.offsetParent)return;

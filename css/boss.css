@@ -38,7 +38,7 @@
  .dock .ide{box-shadow:none}
  .dock #bed,.dock #ed,.dock #sb{height:18vh;min-height:90px}
  .dock .row3{margin-top:10px}
- .dock.shut>*:not(.dk-t){display:none}.dock.shut{padding-bottom:4px}
+ .dock.shut>*:not(.dk-t):not(.dk-l){display:none}.dock.shut{padding-bottom:4px}
 }
 
 /* terminal: wrap long lines, keep inside the screen on phones */
