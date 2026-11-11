@@ -1,0 +1,66 @@
+/* About page, old-TV studio theme in the site's blue palette (#0511F2 #3D46F2 #5C64F2 #9498F2 #F2F2F2).
+   Layers on top of about.css; the monitor frame, copy and structure are unchanged.
+   Images: tv-wall.png (stack of CRT TVs; swap in a real photo with a transparent background to change it), tv-truss.png, tv-lamp.png */
+#about{background:#0a0c1e;color:var(--pale);--ab-line:#5c64f2;--ab-card:#12143a}
+.ab-eye{color:var(--lav)}
+.ab-h{color:#fff;text-shadow:3px 3px 0 #0511f2}
+.ab-chips li{color:#fff;background:#12143a;border-color:#5c64f2;box-shadow:4px 4px 0 #3d46f2}
+
+/* studio layer: truss + spotlights + TV stacks (hero and closing section) */
+.ab-hero,.ab-cta{position:relative;isolation:isolate;overflow:hidden}
+.ab-hero>.wrap,.ab-cta>.in{position:relative;z-index:2}
+.tvd{position:absolute;inset:0;z-index:0;pointer-events:none}
+.tvd::before{content:"";position:absolute;inset:0 0 auto 0;height:300px;opacity:.7;image-rendering:pixelated;
+ background:url(../assets/images/tv-truss.png) 0 0/144px 144px repeat;
+ -webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.tvd::after{content:"";position:absolute;inset:0;background:
+ radial-gradient(ellipse 60% 45% at 50% 0%,rgba(92,100,242,.38),transparent 70%),
+ radial-gradient(ellipse 70% 40% at 50% 100%,rgba(61,70,242,.3),transparent 70%)}
+.lp{position:absolute;top:0;width:54px;height:78px;z-index:1;background:url(../assets/images/tv-lamp.png) 0 0/100% 100% no-repeat;image-rendering:pixelated}
+.lp::before{content:"";position:absolute;left:50%;top:84%;width:300px;height:420px;margin-left:-150px;transform-origin:50% 0;
+ background:linear-gradient(rgba(190,196,255,.36),rgba(148,152,242,0));clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);animation:lampfl 3.2s steps(8) infinite alternate}
+.lp.l1{left:20%}.lp.l2{left:50%;margin-left:-27px}.lp.l3{right:20%}
+.lp.l1::before{transform:rotate(12deg)}.lp.l3::before{transform:rotate(-12deg)}
+@keyframes lampfl{from{opacity:.75}to{opacity:1}}
+.st{position:absolute;bottom:-6px;width:min(400px,30vw);aspect-ratio:943/705;z-index:1;background:url(../assets/images/tv-wall.png) 0 0/100% 100% no-repeat;filter:drop-shadow(0 0 30px rgba(92,100,242,.45))}
+.st.sl{left:-60px}.st.sr{right:-60px;transform:scaleX(-1)}
+
+/* hero */
+.ab-hero{padding:100px 0 90px;background:linear-gradient(#0a0c1e,#10124a 75%,#1a1d78)}
+.crt{filter:drop-shadow(0 0 40px rgba(92,100,242,.5))}
+
+/* video, framed like a TV */
+.ab-video{background:linear-gradient(#1a1d78,#0a0c1e);padding:72px 0 120px}
+.vbox{border:6px solid #0a0a14;border-radius:26px / 34px;box-shadow:0 0 0 14px #34323c,0 0 0 18px #0a0a14,0 0 90px rgba(92,100,242,.45),0 26px 0 6px #0a0a14;background-color:#0d0f26}
+.vbox::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,.16) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 70px rgba(0,0,0,.55)}
+.vbox::before{background:#3d46f2;mix-blend-mode:color;opacity:.9}
+.vplay i{background:var(--pale)}.vplay i::before{border-left-color:#0511f2}
+.vplay{text-shadow:2px 2px 0 #0a0c1e}
+
+/* mission */
+.ab-mission{border-top:4px solid #3d46f2;border-bottom:4px solid #3d46f2}
+.ab-code{border:6px solid #34323c;border-radius:18px / 22px;box-shadow:0 0 0 4px #0a0a14,6px 10px 0 4px #0a0a14;overflow:hidden}
+.ab-code-bar{background:#23234a}
+.ab-mbox{background:#12143a;border-color:#9498f2;box-shadow:6px 6px 0 #0a0c6a}
+.ab-mbox .ab-eye{color:var(--lav)}
+.ab-mbox>p{color:#c9cdf5}
+.ab-tags li{color:#fff;background:#0a0c1e;border-color:#5c64f2}
+
+/* beliefs */
+.ab-believe{background:linear-gradient(#0a0c1e,#10124a);border-top:0}
+.ab-card{background:var(--ab-card);border-color:#5c64f2;box-shadow:8px 8px 0 #3d46f2}
+.ab-card p{color:#c9cdf5}
+
+/* closing */
+.ab-cta{padding:130px 0;background:linear-gradient(#10124a,#0a0c1e 40%,#1a1d78)}
+.ab-cta::before{display:none}
+.ab-cta h2{text-shadow:4px 4px 0 #0511f2}
+
+@media(max-width:1100px){.st{width:min(300px,26vw)}}
+@media(max-width:900px){
+ .st{display:none}.lp{width:40px;height:58px}.lp.l1{left:12%}.lp.l3{right:12%}
+ .lp::before{width:200px;height:300px;margin-left:-100px}
+ .ab-hero{padding:72px 0 60px}.vbox{box-shadow:0 0 0 9px #34323c,0 0 0 12px #0a0a14,0 0 50px rgba(92,100,242,.4)}
+ .ab-video{padding:56px 0 80px}.ab-cta{padding:90px 0}
+}
+@media(prefers-reduced-motion:reduce){.lp::before{animation:none}}

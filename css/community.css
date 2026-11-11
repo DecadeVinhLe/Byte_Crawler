@@ -9,7 +9,7 @@
 .rd-hd{font:400 14px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mu);padding:8px 14px 6px}
 .rd-nav{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 14px;font:400 17px var(--mono);color:var(--tx);background:none;border:0;cursor:pointer}
 .rd-nav.on{background:var(--bar);color:#fff}.rd-nav em{margin-left:auto;font-style:normal;color:var(--gold)}
-.rd-av{flex:none;width:24px;height:24px;display:inline-grid;place-items:center;font:400 14px var(--px);color:#fff;background:var(--c,#3b46e0);border:2px solid var(--ink)}
+.rd-av{flex:none;width:24px;height:24px;display:inline-grid;place-items:center;font:400 14px var(--px);color:#fff;background:var(--c,#3d46f2);border:2px solid var(--ink)}
 .rd-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px;margin-bottom:16px}
 .rd-bar input{flex:1 1 160px;min-width:0;padding:8px 12px;font:18px var(--mono)}
 .rd-tabs{display:flex;gap:6px}.rd-tabs button,.rd-btn{font:400 16px var(--mono);color:var(--tx);background:var(--card);border:2px solid var(--line);padding:7px 12px;cursor:pointer}

@@ -2,7 +2,7 @@
 (function(){
 function $(i){return document.getElementById(i)}
 function esc(t){return String(t).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-var C=[{k:"bytecrawler",n:"r/ByteCrawler",c:"#3b46e0",m:"12.4k",d:"The official hangout: boss-room wins, feedback and tips."},
+var C=[{k:"bytecrawler",n:"r/ByteCrawler",c:"#3d46f2",m:"12.4k",d:"The official hangout: boss-room wins, feedback and tips."},
 {k:"learnpython",n:"r/LearnPython",c:"#2f8f5b",m:"8.1k",d:"Beginner-friendly Python questions, no silly questions allowed."},
 {k:"mathhelp",n:"r/MathHelp",c:"#c0504d",m:"5.7k",d:"Maths twins for every coding idea. Ask, explain, repeat."},
 {k:"pixelart",n:"r/PixelArt",c:"#7b5bd6",m:"3.2k",d:"Sprites, potions, swords and dungeon tiles."},
