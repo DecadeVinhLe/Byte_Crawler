@@ -111,3 +111,4 @@ background:linear-gradient(transparent 26%,#23232f 26% 32%,transparent 32% 66%,#
  .cg>.dock>.dk-t{text-align:center;border:2px solid var(--line);padding:6px 4px;font-size:16px}
  #lesson .lback:last-child{position:sticky;bottom:10px;z-index:5}
 }
+@media(max-width:760px){.side .r2{display:none}}
