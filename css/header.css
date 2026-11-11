@@ -63,3 +63,16 @@ header.scrolled .ico{max-width:150px;margin-left:12px;opacity:1;visibility:visib
 /* Dim the page while the phone menu is open and stop it scrolling underneath */
 .nv-ov{position:fixed;inset:0;background:rgba(10,10,30,.55);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s;z-index:45}
 .nv-lock{overflow:hidden}.nv-lock .nv-ov{opacity:1;visibility:visible;transition-delay:0s}
+
+/* clearer header icons: bigger, solid, each with its own colour */
+.ico a,.ico button{width:44px;height:42px}
+.ico svg{width:26px;height:26px;fill:currentColor;stroke:none}
+.ico .sun{stroke:currentColor;stroke-width:2.6;stroke-linecap:round;fill:currentColor}
+.ico .i-db{color:#ffd23f}.ico .i-cm{color:#6ee7f2}.ico .i-th{color:#fff}
+:root[data-theme="dark"] .ico .i-th{color:#ffd23f}
+.ico a[aria-current="page"]{color:#fff}
+header.scrolled .ico{max-width:190px}
+@media(max-width:760px){.ico a,.ico button{width:42px;height:40px}.ico{gap:5px}}
+@media(max-width:430px){header .logo{font-size:20px;letter-spacing:.03em;gap:6px}header .logo svg{width:28px;height:28px}.ico a,.ico button{width:38px;height:38px}.ico svg{width:23px;height:23px}}
+.ico{flex:none}
+@media(max-width:360px){header .logo{font-size:16px;letter-spacing:0}header .logo svg{width:24px;height:24px}.ico a,.ico button{width:34px;height:36px}.ico svg{width:21px;height:21px}}
