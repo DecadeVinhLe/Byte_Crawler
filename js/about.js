@@ -8,3 +8,11 @@
   else if(vm)h='<iframe src="https://player.vimeo.com/video/'+vm[1]+'?autoplay=1" title="Introduction video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
   else h='<video src="'+src.replace(/"/g,"")+'" controls autoplay playsinline></video>';
   b.innerHTML=h}})();
+
+/* Fit the hero text to the TV screen: as large as will fit, whatever font is loaded */
+(function(){var s=document.querySelector(".crt-scr");if(!s)return;var p=s.querySelector("p"),h=s.querySelector("h1");
+ function fit(){var z=5.4;p.style.fontSize=z+"cqw";h.style.fontSize=(z*1.9)+"cqw";
+  var cs=getComputedStyle(s),inner=s.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  while(z>2.4&&(h.offsetHeight+p.offsetHeight+p.offsetTop-h.offsetTop-h.offsetHeight)>inner){z-=.2;p.style.fontSize=z+"cqw";h.style.fontSize=(z*1.9)+"cqw"}}
+ fit();addEventListener("resize",fit);addEventListener("hashchange",function(){setTimeout(fit,30)});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit)})();

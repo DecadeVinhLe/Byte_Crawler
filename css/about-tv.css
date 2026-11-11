@@ -103,8 +103,8 @@
 .crt-scr p{font-size:3.1cqw;line-height:1.35;margin-top:2.4cqw}
 .crt-scr h1{font-size:8cqw}
 .crt-scr{padding:5% 6%}
-.crt-scr h1{font-size:6.6cqw;line-height:1.05}
-.crt-scr p{font-size:2.75cqw;line-height:1.3;margin-top:1.8cqw}
+.crt-scr h1{font-size:9.5cqw;line-height:1}
+.crt-scr p{font-size:5cqw;line-height:1.22;margin-top:2cqw}
 @media(min-width:901px){.ab-mission-in{align-items:stretch}.ab-code{display:flex;flex-direction:column}.ab-scr{flex:1;display:flex;flex-direction:column;min-height:0}.ab-scr img{flex:1;height:auto;min-height:0}}
 
 /* VT323 everywhere, including form controls, code and the editor */
