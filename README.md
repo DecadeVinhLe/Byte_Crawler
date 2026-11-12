@@ -60,7 +60,7 @@ All file paths are relative, so the site works from a sub-path like this, from a
 | --- | --- | --- | --- | --- |
 | **** | Design Leader | Asia University | 1st year | [](mailto:) |
 | **Lê Trần Lâm Vinh** | Member | Asia University | 1st year | [vinhlamle2003@gmail.com](mailto:vinhlamle2003@gmail.com) |
-| **** | Member | Asia University | 1st year | []() |
+| **Hoàng Xuân Nhi** | Member | Asia University | 1st year | [hnhi20307@gmail.com](hnhi20307@gmail.com) |
 | **** | Member | Asia University | 1st year | []() |
 | **** | Member | Asia University | 1st year | []() |
 
