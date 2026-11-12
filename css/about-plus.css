@@ -12,3 +12,9 @@
 :root[data-theme="dark"] #about .ab-team h2{color:var(--gold)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #about .ab-team h2{color:var(--gold)}}
 @media(max-width:900px){#about .ab-team{padding:56px 0 64px}}
+
+/* About background: dark blue horizon with a glowing grid floor (assets/images/about-bg.png).
+   The image sits at the bottom of each section; the solid colour above it matches the image's top edge, so tall sections stay seamless. */
+#about{background:#010d1b!important}
+#about .ab-hero,#about .ab-video,#about .ab-mission,#about .ab-believe,#about .ab-cta{background:#010d1b url(../assets/images/about-bg.png) center bottom/100% auto no-repeat!important;image-rendering:auto}
+#about .ab-believe{border-top:0}
