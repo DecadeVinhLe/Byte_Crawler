@@ -9,10 +9,11 @@
   else h='<video src="'+src.replace(/"/g,"")+'" controls autoplay playsinline></video>';
   b.innerHTML=h}})();
 
-/* Fit the hero text to the TV screen: as large as will fit, whatever font is loaded */
-(function(){var s=document.querySelector(".crt-scr");if(!s)return;var p=s.querySelector("p"),h=s.querySelector("h1");
- function fit(){var z=5.4;p.style.fontSize=z+"cqw";h.style.fontSize=(z*1.9)+"cqw";
+/* Fit the hero text to the TV screen: the title always stays on one line, the paragraph fills the rest. Works with any font. */
+(function(){var s=document.querySelector(".crt-scr");if(!s)return;var p=s.querySelector("p"),h=s.querySelector("h1");if(!p||!h)return;
+ function fit(){var t=9.5;h.style.fontSize=t+"cqw";while(t>3&&h.scrollWidth>h.clientWidth+1){t-=.2;h.style.fontSize=t+"cqw"}
+  var z=5.4;p.style.fontSize=z+"cqw";
   var cs=getComputedStyle(s),inner=s.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
-  while(z>2.4&&(h.offsetHeight+p.offsetHeight+p.offsetTop-h.offsetTop-h.offsetHeight)>inner){z-=.2;p.style.fontSize=z+"cqw";h.style.fontSize=(z*1.9)+"cqw"}}
+  while(z>2.4&&(h.offsetHeight+p.offsetHeight+p.offsetTop-h.offsetTop-h.offsetHeight)>inner){z-=.2;p.style.fontSize=z+"cqw"}}
  fit();addEventListener("resize",fit);addEventListener("hashchange",function(){setTimeout(fit,30)});
  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit)})();

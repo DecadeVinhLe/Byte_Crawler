@@ -1,0 +1,14 @@
+/* About page refinements: calmer hero (no TV stacks or spotlights), title kept on one line, team section.
+   Loads after about-tv.css; light-mode panel colours come from the shared .ab-card rules in light.css. */
+
+/* hero: monitor with the text on its screen; title on one line */
+.ab-hero{padding:72px 0 96px}
+.crt-scr h1{white-space:nowrap}
+@media(max-width:900px){.ab-hero{padding:48px 0 64px}}
+
+/* team: identical to the Contact page team (same theme colours, heading, lead and cards) */
+#about .ab-team{background:var(--page)!important;color:var(--tx);border-top:4px solid #3d46f2;padding:72px 0 88px}
+#about .ab-team h2{font:400 clamp(60px,9vw,104px)/.95 var(--px);text-transform:uppercase;letter-spacing:.06em;color:var(--deep);text-shadow:none;display:inline-block;padding-bottom:8px;border-bottom:4px solid var(--gold)}
+:root[data-theme="dark"] #about .ab-team h2{color:var(--gold)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #about .ab-team h2{color:var(--gold)}}
+@media(max-width:900px){#about .ab-team{padding:56px 0 64px}}
