@@ -53,6 +53,18 @@ python3 -m http.server 8000
 
 All file paths are relative, so the site works from a sub-path like this, from a custom domain, or from any other static host (Netlify, Cloudflare Pages, Vercel).
 
+## Members
+
+
+| Member | Role | University | Year | Contact |
+| --- | --- | --- | --- | --- |
+| **** | Design Leader | Asia University | 1st year | [](mailto:) |
+| **Lê Trần Lâm Vinh** | Member | Asia University | 1st year | [vinhlamle2003@gmail.com](mailto:vinhlamle2003@gmail.com) |
+| **** | Member | Asia University | 1st year | []() |
+| **** | Member | Asia University | 1st year | []() |
+| **** | Member | Asia University | 1st year | []() |
+
+
 ## Notes
 
 - Boss fight: Phase 1 is the Wyrm; beat it and the Storm Wyrm (Phase 2) rises and hurls lightning whenever you miss a round. Edit `TESTS1` / `TESTS2` in `js/app.js` to change the rounds.
