@@ -1,6 +1,6 @@
 /* Hash router: shows one page at a time and starts page-specific code. */
 /* router */
-var PG=["home","about","course","lesson","boss","contact","dashboard","community"];
+var PG=["home","about","course","lesson","boss","contact","dashboard","community","login"];
 function route(){var h=(location.hash||"#home").slice(1),all=h=="all";if(h=="problem-solving")h="boss";if(h=="lesson"&&!matchMedia("(max-width:760px)").matches)h="course";if(!all&&PG.indexOf(h)<0)h="home";
  document.querySelectorAll(".pg").forEach(function(p){p.classList.toggle("show",all||p.id==h)});
  if(all||h=="boss")arena();if(all||h=="dashboard")dash();window.scrollTo(0,0)}

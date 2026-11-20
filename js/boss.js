@@ -48,7 +48,7 @@ $("batk").onclick=function(){if(busy)return;
  if(won){won=false;enterPhase(1)}
  var P=PHASES[phase],code=$("bed").value,msg=P.check(code);
  if(msg){$("blog").innerHTML="";log(msg,"x");return}
- busy=true;hp=HPMAX=P.tests.length;hearts=3;hud();$("blog").innerHTML="";
+ if(window.BCEnd)BCEnd.start();busy=true;hp=HPMAX=P.tests.length;hearts=3;hud();$("blog").innerHTML="";
  if(phase==2)log("⚡ Phase 2: miss a round and the Storm Wyrm hurls lightning!","x");
  if(F.setPhase)F.setPhase(phase);var i=0;
  (function rd(){if(i>=P.tests.length){busy=false;
@@ -56,12 +56,12 @@ $("batk").onclick=function(){if(busy)return;
     if(phase==1){log("🐉 The Wyrm falls! ...but the sky cracks open.","g");busy=true;F.phase2();
      setTimeout(function(){enterPhase(2);
       log("⚡ PHASE 2: the Storm Wyrm awakens! It shouts numbers now. Use input() and a loop to catch them, then press Attack.","g");busy=false},2400)}
-    else{log("⚡ The Storm Wyrm falls! "+(S.boss?"":"+200 XP · Reward: 🐉 Wyrm Slayer"),"g");if(!S.boss){S.boss=1;S.xp+=200;save();side();dash()}won=true;F.win()}}
+    else{log("⚡ The Storm Wyrm falls! "+(S.boss?"":"+200 XP · Reward: 🐉 Wyrm Slayer"),"g");var first=!S.boss;if(first){S.boss=1;S.xp+=200;save();side();dash()}won=true;F.win();if(window.BCEnd)BCEnd.win(first)}}
    else log("The "+P.who+" survives with "+hp+"/"+HPMAX+" HP. Fix your code and attack again.","x");return}
   var t=P.tests[i],r=P.run(code,t),ok=!r.err&&r.out.trim()==t.out;
   log("Round "+(i+1)+": "+P.show(t)+" → "+(r.err||r.out||"(no output)")+" · expected "+t.out+(ok?"  ✓ HIT":"  ✗ MISS"),ok?"g":"x");
   if(ok)hp--;else hearts--;F.atk(ok);hud();i++;
-  if(hearts<=0){busy=false;setTimeout(function(){log("💀 You fell. Debug your code and try again.","x");F.lose()},1000);return}
+  if(hearts<=0){busy=false;setTimeout(function(){log("💀 You fell. Debug your code and try again.","x");F.lose();if(window.BCEnd)BCEnd.lose()},1000);return}
   setTimeout(rd,1500)})()};
 
 /* Phase 2 helper: type your own input (one value per line) and see what your code prints. */

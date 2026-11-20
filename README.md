@@ -72,3 +72,16 @@ All file paths are relative, so the site works from a sub-path like this, from a
 - Fonts (Google Fonts) and the 3D boss arena (three.js from cdnjs) load from CDNs, so visitors need an internet connection. The boss fight still works without the 3D arena.
 - Progress and community posts live in the browser tab only and reset on reload.
 - Pages use `#hash` links (for example `#course`), so no server-side routing is needed.
+
+## End-of-boss flow (result screen, cutscene, login, records)
+
+Files: `js/result.js`, `css/result.css`, overlay markup at the end of `index.html`, `assets/video/*`.
+
+- **Mission Complete** (win): papyrus treasure map, clear time, best time, XP, rank. Click anywhere (or Enter / Space) to play the cutscene.
+- **Cutscene**: `assets/video/cutscene.mp4` (volume starts at 50%, slider + mute in the corner). The **Hold to skip** button must be held about 1.1 s (mouse, touch, or hold Space / Enter). When it ends or is skipped, **Continue a journey** opens the Dashboard.
+- **Game Over** (lose): papyrus map with a pixel menu. **Continue** opens the Learning path, **Quit** opens the Dashboard.
+- **Dashboard** has a *Boss record* card (best time, last clear, victories, defeats, last runs).
+- **Login** page (`#login`) and a Log in button in the header. It is a demo: name and email are kept in this browser's localStorage, passwords are never stored.
+- Boss timer starts at the first Attack and stops on the win or the fall (`BCEnd.start / win / lose` in `js/boss.js`).
+- Design review without fighting the boss: open `index.html?preview=win` or `?preview=lose` (or run `BCEnd.preview("win")` in the console).
+- Esc closes the result screen and returns to the boss room.

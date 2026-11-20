@@ -1,0 +1,136 @@
+/* End-of-boss flow: papyrus result screen (Mission Complete / Game Over), cutscene with hold-to-skip,
+   login page and the boss-record card. Markup lives at the end of index.html, logic in js/result.js. */
+
+/* ---------- full-screen overlay ---------- */
+html.end-lock{overflow:hidden}
+.end{position:fixed;inset:0;z-index:200;font-family:var(--mono);color:#2b1a0a}
+.end [hidden],.end[hidden],.es[hidden]{display:none!important}
+.es{position:absolute;inset:0}
+@keyframes endin{from{opacity:0}}
+@keyframes unroll{from{opacity:0;transform:scale(.92) translateY(14px)}}
+
+/* ---------- papyrus result screen ---------- */
+.es-res{display:grid;place-items:center;overflow:auto;padding:12px;animation:endin .4s steps(6)}
+.es-res[data-out="win"]{background:radial-gradient(ellipse at 50% 35%,#6a4713 0,#25190a 55%,#07060a 100%)}
+.es-res[data-out="lose"]{background:radial-gradient(ellipse at 50% 35%,#1f3a52 0,#0d1530 55%,#05060f 100%)}
+.es-res.tap{cursor:pointer}
+.pap{position:relative;width:min(1120px,96vw);aspect-ratio:5/3;max-height:calc(100dvh - 24px);animation:unroll .5s steps(8)}
+.pap-bg{position:absolute;inset:0;width:100%;height:100%;display:block;filter:drop-shadow(0 16px 0 rgba(0,0,0,.35))}
+.pap-bg .route{animation:endin 1.2s steps(10) .3s backwards}
+.pap-in{position:absolute;left:19%;right:19%;top:13%;bottom:11%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(6px,1.4vw,16px)}
+.etitle{margin:0;font:400 clamp(20px,5.2vw,54px)/1.28 "Press Start 2P",var(--px),monospace;text-transform:uppercase;letter-spacing:.02em;display:flex;flex-direction:column;align-items:center;-webkit-text-stroke:.14em #2b1a0a;paint-order:stroke fill;text-shadow:0 .1em 0 #6b3f18}
+.es-res[data-out="win"] .etitle{color:#ffd23f}
+.es-res[data-out="lose"] .etitle{color:#8fbcb0;text-shadow:0 .1em 0 #3b6a6a}
+.eban{font:400 clamp(10px,1.45vw,15px)/1.5 "Press Start 2P",monospace;color:#ffd23f;background:#2b1a0a;border:3px solid #6b3f18;padding:.55em 1.1em;letter-spacing:.04em;text-transform:uppercase}
+.es-res[data-out="lose"] .eban{color:#cfe6df}
+.esub{margin:0;font:400 clamp(17px,2.3vw,26px)/1.2 var(--mono);color:#2b1a0a;max-width:30em}
+.estats{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:clamp(6px,1vw,12px);margin:0;padding:0;width:100%}
+.st{background:#2b1a0a;border:3px solid #6b3f18;padding:.35em .6em;position:relative}
+.st dt{font:400 clamp(14px,1.8vw,20px)/1 var(--mono);color:#e9d3a0;margin:0}
+.st dd{margin:.15em 0 0;font:400 clamp(20px,3vw,34px)/1.05 var(--mono);color:#ffd23f}
+.st.new dd{color:#7dff9a}
+.nr{position:absolute;right:-8px;top:-14px;transform:rotate(8deg);background:#ffd23f;color:#2b1a0a;border:3px solid #2b1a0a;font:400 clamp(11px,1.3vw,15px)/1 "Press Start 2P",monospace;padding:.4em .55em;animation:pop .7s steps(2) infinite alternate}
+@keyframes pop{to{transform:rotate(8deg) translateY(-3px)}}
+.etap{margin:0;font:400 clamp(10px,1.5vw,15px)/1.5 "Press Start 2P",monospace;color:#2b1a0a;letter-spacing:.04em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:.15}}
+
+/* pixel decorations around the title (trophies, stars, check) */
+.dc{position:absolute;display:block;filter:drop-shadow(.14em .14em 0 rgba(43,26,10,.85));pointer-events:none}
+.dc svg,.pxs{display:block;width:100%;height:auto;shape-rendering:crispEdges}
+.dc.fl{animation:flo 1.6s steps(2) infinite alternate}.dc.tw{animation:tw 1.1s steps(2) infinite}
+@keyframes flo{to{transform:translateY(-6px)}}@keyframes tw{50%{opacity:.25}}
+
+/* Game Over menu, styled like the pixel menu in the reference */
+.emenu{display:grid;gap:2px;background:#14142e;border:4px solid #2b1a0a;padding:12px 26px 12px 18px;box-shadow:6px 6px 0 rgba(43,26,10,.5);min-width:min(80%,360px)}
+.emenu button{font:400 clamp(13px,2vw,20px)/1.5 "Press Start 2P",monospace;color:#fff;background:none;border:0;padding:.5em .6em .5em 2em;position:relative;text-align:left;cursor:pointer;display:flex;flex-wrap:wrap;gap:0 1em;align-items:baseline;text-transform:uppercase}
+.emenu button::before{content:"";position:absolute;left:.3em;top:50%;border:.5em solid transparent;border-left:.8em solid #fff;border-right:0;transform:translateY(-50%);opacity:0}
+.emenu button.sel::before{opacity:1;animation:blink 1s steps(1) infinite}
+.emenu button:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
+.emenu small{font:400 clamp(15px,1.7vw,19px)/1 var(--mono);color:#9aa0d8;text-transform:none;letter-spacing:0}
+
+/* phones in portrait: the papyrus fills the screen */
+@media(max-width:700px) and (orientation:portrait){
+ .pap{width:100vw;aspect-ratio:auto;height:min(calc(100dvh - 12px),170vw)}
+ .pap-in{left:9%;right:9%;top:9%;bottom:8%;gap:10px}
+ .estats{grid-auto-flow:row;grid-template-columns:1fr 1fr}
+ .etitle{font-size:clamp(20px,8vw,40px)}
+}
+
+/* ---------- cutscene ---------- */
+.es-cut{background:#000;animation:endin .5s steps(8)}
+.es-cut video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.cs-end{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .9s}
+.cs-end.on{opacity:1}
+.cs-ui{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:clamp(12px,2.4vw,28px);padding-bottom:calc(clamp(12px,2.4vw,28px) + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.cs-ui[hidden]{display:none}
+.vol{display:flex;align-items:center;gap:10px;color:#fff;font:400 20px var(--mono)}
+.vol button{width:44px;height:44px;display:grid;place-items:center;background:rgba(20,20,50,.8);color:#fff;border:3px solid #fff;cursor:pointer;padding:0}
+.vol svg{width:22px;height:22px;fill:currentColor}
+.vol input[type=range]{width:clamp(90px,16vw,160px);padding:0;border:0;background:none;accent-color:#ffd23f;height:28px}
+.vol .vl{min-width:3.4em}
+.skip{position:relative;overflow:hidden;font:400 clamp(11px,1.5vw,15px)/1.2 "Press Start 2P",monospace;color:#fff;background:rgba(20,20,50,.8);border:3px solid #fff;padding:1.05em 1.4em;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;min-height:48px;text-transform:uppercase;opacity:.85}
+.skip:hover,.skip.hold{opacity:1}
+.skip::before{content:"";position:absolute;left:0;bottom:0;height:8px;width:calc(var(--p,0)*100%);background:#ffd23f}
+.skip span{position:relative;mix-blend-mode:normal}
+.skip.hold{border-color:#ffd23f}.skip{text-align:center}
+.skip.nudge{animation:nudge .35s steps(4)}
+@keyframes nudge{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.skip small{display:block;margin-top:.6em;font:400 clamp(14px,1.6vw,18px)/1 var(--mono);text-transform:none;letter-spacing:0;opacity:.85}
+.cs-fin{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:clamp(14px,3vw,36px);padding-bottom:calc(clamp(14px,3vw,36px) + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(0,0,0,.72) 55%)}
+.cs-fin[hidden]{display:none}
+.scrl{background:linear-gradient(#ecd9a6,#d9b878);border:4px solid #6b3f18;box-shadow:6px 6px 0 rgba(0,0,0,.5),inset 0 0 0 3px #f4e6bd;padding:clamp(14px,2.2vw,24px) clamp(18px,3.2vw,40px);text-align:center;display:grid;gap:10px;justify-items:center;animation:unroll .45s steps(6)}
+.scrl p{margin:0;font:400 clamp(10px,1.4vw,14px)/1.5 "Press Start 2P",monospace;color:#2b1a0a;text-transform:uppercase}
+.scrl .sub{font:400 clamp(17px,2vw,22px)/1.2 var(--mono);text-transform:none;color:#4a2f14}
+.go{font:400 clamp(13px,2vw,20px)/1.2 "Press Start 2P",monospace;color:#2b1a0a;background:#ffd23f;border:4px solid #2b1a0a;padding:1em 1.4em;cursor:pointer;box-shadow:5px 5px 0 #2b1a0a;text-transform:uppercase}
+.go:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #2b1a0a}.go:active{transform:translate(4px,4px);box-shadow:0 0 0 #2b1a0a}
+.rp{font:400 20px var(--mono);color:#4a2f14;background:none;border:0;cursor:pointer;text-decoration:underline;padding:6px 10px}
+.end :focus-visible{outline:3px solid #ffd23f;outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- login page ---------- */
+.lg-sec{display:flex;align-items:center;min-height:min(780px,calc(100svh - 120px))}
+.lg-sec .wrap{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.lg-sec .lead{margin-inline:auto}
+.lg{width:100%;max-width:520px;margin:32px auto 0;text-align:left}
+.lg-card{max-width:none}
+.lg label[hidden]{display:none}
+.lg-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:16px}
+.lg-tabs button{font:400 19px var(--px);text-transform:uppercase;color:var(--tx);background:transparent;border:3px solid var(--line);padding:10px;cursor:pointer}
+.lg-tabs button[aria-selected="true"]{background:var(--blue);color:#fff}
+.lg form{margin-top:0;max-width:none}
+.lg .err{font:400 18px var(--mono);color:#c2263a;min-height:22px}
+:root[data-theme="dark"] .lg .err{color:#ff8fa3}
+.lg .btn{width:100%;text-align:center}
+.lg .sep{text-align:center;font:400 17px var(--mono);color:var(--mu);margin:2px 0}
+.lg-who{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.lg-av{width:58px;height:58px;display:grid;place-items:center;background:var(--gold);color:var(--ink);border:3px solid var(--ink);font:400 30px var(--px)}
+
+/* header login button */
+.ico .i-lg{color:#9cf0b3}
+header.scrolled .ico{max-width:250px}
+.top .tl.lg-on{color:var(--blue)}
+:root[data-theme="dark"] .top .tl.lg-on{color:#9cf0b3}
+
+/* ---------- dashboard: boss record ---------- */
+.rec-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
+.rec-g div{border:3px solid var(--line);padding:10px 14px}
+.rec-g span{display:block;font:400 16px var(--mono);color:var(--mu)}
+.rec-g b{display:block;font:400 34px var(--px);margin-top:4px}
+.rec-g .nw b{color:var(--blue)}
+:root[data-theme="dark"] .rec-g .nw b{color:#7dff9a}
+.dm .w{color:var(--blue)}.dm .l{color:#c2263a}
+:root[data-theme="dark"] .dm .l{color:#ff8fa3}
+.rec-login{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+@media(max-width:700px){.rec-g{grid-template-columns:1fr 1fr}}
+.deco{position:absolute;inset:0;pointer-events:none}
+/* final "Continue a journey" bar: slim, so the end frame and its title stay visible */
+.scrl{grid-template-columns:1fr auto;gap:2px 28px;text-align:left;justify-items:start;align-items:center;width:min(860px,100%)}
+.scrl p{grid-column:1}.scrl .go{grid-column:2;grid-row:1/4;align-self:center}
+.rp{grid-column:1;padding:2px 0;font-size:19px;justify-self:start}
+@media(max-width:700px){.scrl{grid-template-columns:1fr;text-align:center;justify-items:center}.scrl .go{grid-column:1;grid-row:auto}.rp{justify-self:center}}
+@media(max-width:700px) and (orientation:portrait){.es-res{padding:0}}
+/* compact bar so the new end card (title on top, heroes along the bottom) stays visible */
+.cs-fin{padding:clamp(8px,1.4vw,16px);padding-bottom:calc(clamp(8px,1.4vw,16px) + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(0,0,0,.5) 60%)}
+.scrl{padding:8px 18px;gap:0 22px;width:min(780px,100%)}
+.scrl p{font-size:clamp(9px,1.05vw,12px)}.scrl .sub{font-size:clamp(16px,1.7vw,20px)}
+.go{padding:.75em 1.05em;font-size:clamp(11px,1.5vw,16px)}.rp{font-size:17px}
