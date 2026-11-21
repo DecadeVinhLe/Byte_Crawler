@@ -7,7 +7,7 @@
 var $=function(i){return document.getElementById(i)},root=document.documentElement,
  end=$("end"),res=$("esRes"),cut=$("esCut"),vid=$("csv"),skip=$("csSkip"),ui=$("csUi"),fin=$("csFin"),endImg=$("csEnd"),
  OUT="win",STAGE="",T0=0,tmr=0,opener=null,done=false,HOLD=1100,hr=0,hs=0,
- REC={best:null,last:null,wins:0,losses:0,hist:[]},USER=null,VOL=0.5;
+ REC={best:null,last:null,wins:0,losses:0,hist:[]},USER=null,VOL=0.5,CLOUD=!!(window.BCCloud&&window.BCCloud.enabled);
 
 /* ================= helpers ================= */
 function fmt(ms){if(ms==null||!isFinite(ms))return"--:--";var s=ms/1000,m=Math.floor(s/60),r=s-m*60;return(m<10?"0":"")+m+":"+(r<10?"0":"")+r.toFixed(1)}
@@ -81,19 +81,72 @@ function papyrus(out,portrait){
 
 /* ================= records + user (kept in this browser only) ================= */
 function recKey(){return"bc_rec_"+(USER?USER.email:"")}
-function saveRec(){if(USER)lsSet(recKey(),JSON.stringify(REC))}
+function saveRec(){if(USER){if(CLOUD)BCCloud.queue();else lsSet(recKey(),JSON.stringify(REC))}}
 function mergeRec(){var r=null;try{r=JSON.parse(lsGet(recKey())||"null")}catch(e){}
  if(r){REC.best=REC.best==null?r.best:(r.best==null?REC.best:Math.min(REC.best,r.best));REC.last=REC.last==null?r.last:REC.last;
   REC.wins+=r.wins||0;REC.losses+=r.losses||0;REC.hist=(REC.hist.concat(r.hist||[])).sort(function(a,b){return b.at-a.at}).slice(0,8)}
  saveRec()}
 function clearRec(){REC={best:null,last:null,wins:0,losses:0,hist:[]}}
+/* ---- account database (js/account.js): merge what is saved with what is in memory ---- */
+function num(v){return typeof v==="number"&&isFinite(v)&&v>=0?v:null}
+function cleanRec(r){r=r&&typeof r==="object"?r:{};
+ return{best:num(r.best),last:num(r.last),wins:Math.min(num(r.wins)||0,100000),losses:Math.min(num(r.losses)||0,100000),
+  hist:(Array.isArray(r.hist)?r.hist:[]).filter(function(h){return h&&typeof h.at==="number"&&isFinite(h.at)}).slice(0,8)
+   .map(function(h){return{ok:h.ok?1:0,ms:num(h.ms),at:h.at}})}}
+function joinHist(a,b){var seen={},out=[];a.concat(b).forEach(function(h){if(!seen[h.at]){seen[h.at]=1;out.push(h)}});return out.sort(function(x,y){return y.at-x.at}).slice(0,8)}
+function bestOf(a,b){return a==null?b:(b==null?a:Math.min(a,b))}
+/* runs played as a guest are added on top of the account's record */
+function recAdd(r){r=cleanRec(r);REC.best=bestOf(REC.best,r.best);if(REC.last==null)REC.last=r.last;REC.wins+=r.wins;REC.losses+=r.losses;REC.hist=joinHist(REC.hist,r.hist)}
+/* the same record seen from another device: take the larger counters so nothing is counted twice */
+function recSame(r){r=cleanRec(r);var newer=r.hist[0]&&(!REC.hist[0]||r.hist[0].at>REC.hist[0].at);
+ REC.best=bestOf(REC.best,r.best);REC.wins=Math.max(REC.wins,r.wins);REC.losses=Math.max(REC.losses,r.losses);if(newer||REC.last==null)REC.last=r.last;REC.hist=joinHist(REC.hist,r.hist)}
+function calcXp(){var x=Object.keys(S.done).length*50;
+ Object.keys(S.qd).forEach(function(i){var q=S.qd[i],l=L[i];if(q&&l&&l.q&&q.p===l.q[2])x+=10});return x+(S.boss?200:0)}
+function collect(){return{xp:S.xp|0,done:S.done,quiz:S.qd,boss:S.boss?1:0,rec:REC}}
+function mergeProg(p,first){
+ if(!p)return false;var before=JSON.stringify([S.xp,S.done,S.qd,S.boss,REC]);
+ (p.done&&typeof p.done==="object"?Object.keys(p.done):[]).forEach(function(k){if(/^\d+$/.test(k)&&+k<L.length&&p.done[k])S.done[k]=1});
+ (p.quiz&&typeof p.quiz==="object"?Object.keys(p.quiz):[]).forEach(function(k){var q=p.quiz[k];if(/^\d+$/.test(k)&&+k<L.length&&!S.qd[k]&&q&&(q.p|0)===q.p&&q.p>=0&&q.p<4)S.qd[k]={p:q.p}});
+ if(p.boss)S.boss=1;
+ S.xp=Math.max(S.xp|0,Math.min(num(p.xp)||0,100000),calcXp());
+ if(first){var g=cleanRec(REC);REC=cleanRec(p.rec);recAdd(g)}else recSame(p.rec);
+ return JSON.stringify([S.xp,S.done,S.qd,S.boss,REC])!==before}
+function refreshGame(full){
+ try{side()}catch(e){}
+ try{if(full)lesson(Math.min(nDone(),L.length-1))}catch(e){}
+ try{dash()}catch(e){}try{map()}catch(e){}
+ renderUser()}
+function resetGame(){S.xp=0;S.boss=0;S.done={};S.qd={};clearRec()}
+/* ---- browser save: checkpoints, XP and quiz answers survive a reload, with or without an account.
+   A logged-in account saves to the database instead, and the browser copy is dropped once it has been handed over. ---- */
+var LSK="bc_save2";
+function localSave(){if(CLOUD&&USER)return;lsSet(LSK,JSON.stringify({v:1,xp:S.xp|0,done:S.done,quiz:S.qd,boss:S.boss?1:0}))}
+function localLoad(){var p=null;try{p=JSON.parse(lsGet(LSK)||"null")}catch(e){}
+ if(p&&typeof p==="object"&&mergeProg({xp:p.xp,done:p.done,quiz:p.quiz,boss:p.boss,rec:null},false))refreshGame(true)}
+function localDrop(){try{localStorage.removeItem(LSK)}catch(e){}}
+function syncText(s){var e=$("lgSync");if(!e)return;
+ e.textContent={pending:"Saving…",saving:"Saving…",saved:"Progress saved to your account.",offline:"Offline. Progress will save when you reconnect.",error:"Couldn’t save just now. We’ll try again."}[s]||""}
+/* after logging in (or reopening the page while logged in): load the saved copy, merge, save back */
+function adopt(){
+ return BCCloud.pull().then(function(r){
+  if(r.name&&USER)USER.name=r.name;
+  mergeProg(r.progress,true);refreshGame(true);BCCloud.queue();localDrop()},
+ function(e){if(e&&e.offline)syncText("offline");else if(!(e&&e.auth))syncText("error")})}
 function renderRec(){var e=$("rBest");if(!e)return;
  e.textContent=fmt(REC.best);$("rLast").textContent=fmt(REC.last);$("rW").textContent=REC.wins;$("rL").textContent=REC.losses;
+ var lb=$("lgBest");if(lb&&USER)lb.textContent=fmt(REC.best)+" best time · "+REC.wins+" win"+(REC.wins==1?"":"s");
  $("rHist").innerHTML=REC.hist.length?REC.hist.map(function(h){return'<div class="dn"><span class="'+(h.ok?"w":"l")+'">'+(h.ok?"✓ Victory":"✗ Defeat")+"</span><span>"+fmt(h.ms)+"</span></div>"}).join(""):'<div><span>No boss runs yet</span><span>Beat the Wyrm to set a time</span></div>';
- $("rNote").textContent=USER?"Saved to "+USER.name+"’s account in this browser.":"Guest mode: your record is lost when you close the tab. Log in to keep it.";
+ $("rNote").textContent=USER?"Saved to "+USER.name+"’s account"+(CLOUD?".":" in this browser."):"Guest mode: your record is lost when you close the tab. Log in to keep it.";
  $("rLogin").hidden=!!USER}
-function userInit(){var u=null;try{u=JSON.parse(lsGet("bc_user")||"null")}catch(e){}USER=u&&u.email?u:null;if(USER)mergeRec();renderUser()}
+function userInit(){
+ if(CLOUD){var cu=BCCloud.user();
+  if(cu){USER={name:cu.name||cu.email.split("@")[0],email:cu.email};renderUser();
+   BCCloud.restore().then(function(r){if(!r){USER=null;resetGame();refreshGame(true);return}adopt()})}
+  else renderUser();
+  return}
+ var u=null;try{u=JSON.parse(lsGet("bc_user")||"null")}catch(e){}USER=u&&u.email?u:null;if(USER)mergeRec();renderUser()}
 function renderUser(){
+ var dl=$("dbLead");if(dl)dl.textContent=CLOUD?(USER?"Your checkpoints, XP and boss record are saved to your account.":"Your checkpoints and XP are saved in this browser. Log in to keep them, and your boss record, on any device."):"Your checkpoints and XP are saved in this browser. Log in to keep your boss record.";
  var n=USER?USER.name.split(" ")[0]:"Log in",a=$("hLogin"),b=$("hLoginI");
  if(a){a.querySelector("span").textContent=n;a.classList.toggle("lg-on",!!USER);a.title=USER?"Account: "+USER.name:"Log in";a.setAttribute("aria-label",a.title)}
  if(b){b.title=USER?"Account: "+USER.name:"Log in";b.setAttribute("aria-label",b.title)}
@@ -194,24 +247,47 @@ window.BCEnd={
  preview:function(out){if(out==="lose"){REC.losses=Math.max(REC.losses,1);open("lose",{ms:131400})}else{var b=REC.best==null?204300:REC.best;open("win",{ms:b,rec:true,first:true,best:b})}}};
 window.BCREC={render:renderRec};
 
-/* ================= login page (demo: no server, nothing is sent anywhere) ================= */
+/* ================= login page =================
+   With keys in js/config.js it uses the account database (js/account.js).
+   Without them it is the browser-only demo: nothing is sent anywhere. */
 var mode="in";
 function setMode(m){mode=m;$("tabIn").setAttribute("aria-selected",m==="in");$("tabUp").setAttribute("aria-selected",m==="up");
- $("lgNameRow").hidden=m!=="up";$("lgSubmit").textContent=m==="in"?"Log in":"Create account";$("lgErr").textContent="";$("lgPw").autocomplete=m==="in"?"current-password":"new-password"}
+ $("lgNameRow").hidden=m!=="up";$("lgSubmit").textContent=m==="in"?"Log in":"Create account";$("lgErr").textContent="";$("lgMsg").textContent="";$("lgPw").autocomplete=m==="in"?"current-password":"new-password"}
+var lgBusy=false;
+function setBusy(b){lgBusy=b;$("lgSubmit").disabled=b;$("lgSubmit").textContent=b?"Please wait…":(mode==="in"?"Log in":"Create account")}
+function cloudLogin(em,pw,nm){
+ if(lgBusy)return;var err=$("lgErr");setBusy(true);err.textContent="";$("lgMsg").textContent="";
+ (mode==="up"?BCCloud.signUp(em,pw,nm):BCCloud.signIn(em,pw)).then(function(r){
+  $("lgPw").value="";
+  if(r&&r.status==="confirm"){setMode("in");$("lgMsg").textContent="Almost there! If this email is new, we sent you a confirmation link. Open it, then log in here. If you already have an account, just log in.";return}
+  var u=BCCloud.user();USER={name:(mode==="up"&&nm)||u.name||em.split("@")[0],email:u.email};
+  renderUser();return adopt().then(function(){$("lgGo").focus()})
+ }).catch(function(e){err.textContent=BCCloud.explain(e)}).then(function(){setBusy(false)})}
+function cloudLogout(){BCCloud.signOut().then(function(){USER=null;resetGame();setMode("in");refreshGame(true);$("lgEm").focus()})}
 $("tabIn").onclick=function(){setMode("in")};$("tabUp").onclick=function(){setMode("up")};
 $("lgf").onsubmit=function(e){e.preventDefault();
  var em=$("lgEm").value.trim().toLowerCase(),pw=$("lgPw").value,nm=$("lgNm").value.trim(),err=$("lgErr");
  if(mode==="up"&&nm.length<2){err.textContent="Please enter your name (at least 2 letters).";$("lgNm").focus();return}
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){err.textContent="Enter a valid email, for example you@university.edu.";$("lgEm").focus();return}
  if(pw.length<6){err.textContent="Use a password with at least 6 characters.";$("lgPw").focus();return}
+ if(CLOUD){cloudLogin(em,pw,nm);return}
  var old=null;try{old=JSON.parse(lsGet("bc_acct_"+em)||"null")}catch(x){}
  USER={name:mode==="up"?nm:(old&&old.name)||em.split("@")[0],email:em};
  lsSet("bc_user",JSON.stringify(USER));lsSet("bc_acct_"+em,JSON.stringify({name:USER.name}));
  $("lgPw").value="";mergeRec();renderUser();$("lgGo").focus()};
 $("lgGuest").onclick=function(){location.hash="#course"};
 $("lgGo").onclick=function(){location.hash="#dashboard"};
-$("lgOut").onclick=function(){USER=null;try{localStorage.removeItem("bc_user")}catch(e){}clearRec();setMode("in");renderUser();$("lgEm").focus()};
+$("lgOut").onclick=function(){if(CLOUD){cloudLogout();return}USER=null;try{localStorage.removeItem("bc_user")}catch(e){}clearRec();setMode("in");renderUser();$("lgEm").focus()};
 document.querySelectorAll("[data-lg]").forEach(function(a){a.addEventListener("click",function(){location.hash="#login"})});
+if(CLOUD){
+ var ld=$("lgLead");if(ld)ld.textContent="Create an account to keep your checkpoints, XP and boss record, and pick them up on any device. Passwords are handled by the account service and stored only as secure hashes.";
+ BCCloud.configure({collect:collect,merge:function(p){if(mergeProg(p,false))refreshGame(false)}});
+ BCCloud.onStatus(function(s){syncText(s);
+  if(s==="signedout"&&USER){USER=null;resetGame();setMode("in");refreshGame(true);$("lgErr").textContent="Your session ended. Please log in again."}});
+}
+/* course.js and boss.js call save() after every XP or checkpoint change (core.js leaves it empty) */
+window.save=function(){if(CLOUD&&USER)BCCloud.queue();else localSave()};
+if(!(CLOUD&&BCCloud.user()))localLoad();
 setMode("in");userInit();
 
 /* index.html?preview=win | lose opens the result screen straight away (handy for design review) */

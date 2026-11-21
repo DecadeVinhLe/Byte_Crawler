@@ -100,6 +100,11 @@ html.end-lock{overflow:hidden}
 .lg form{margin-top:0;max-width:none}
 .lg .err{font:400 18px var(--mono);color:#c2263a;min-height:22px}
 :root[data-theme="dark"] .lg .err{color:#ff8fa3}
+.lg .msg{font:400 18px var(--mono);color:var(--blue);margin:0}
+.lg .msg:empty{display:none}
+:root[data-theme="dark"] .lg .msg{color:#9cf0b3}
+.lg-sync{min-height:22px;margin-top:6px}
+.lg .btn:disabled{opacity:.6;cursor:progress}
 .lg .btn{width:100%;text-align:center}
 .lg .sep{text-align:center;font:400 17px var(--mono);color:var(--mu);margin:2px 0}
 .lg-who{display:flex;align-items:center;gap:14px;margin-bottom:14px}

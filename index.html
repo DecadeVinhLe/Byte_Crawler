@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="css/about-plus.css?v=1">
 <link rel="stylesheet" href="css/community.css?v=3">
 <link rel="stylesheet" href="css/light.css?v=6">
-<link rel="stylesheet" href="css/result.css?v=2">
+<link rel="stylesheet" href="css/result.css?v=3">
 <noscript><style>.loader{display:none}html.is-loading{overflow:auto}</style></noscript>
 </head>
 <body>
@@ -236,22 +236,22 @@
 </div>
 
 <div class="pg" id="login">
-<section class="sec lg-sec"><div class="wrap"><h2>Log in</h2><p class="lead">Save your boss record and come back to it on any visit. This is a demo login: your name and email stay in this browser, and passwords are never stored.</p>
+<section class="sec lg-sec"><div class="wrap"><h2>Log in</h2><p class="lead" id="lgLead">Save your boss record and come back to it on any visit. This is a demo login: your name and email stay in this browser, and passwords are never stored.</p>
 <div class="lg">
 <div>
 <div class="card lg-card" id="lgForm"><div class="lg-tabs" role="group" aria-label="Account mode"><button type="button" id="tabIn" aria-selected="true">Log in</button><button type="button" id="tabUp" aria-selected="false">Sign up</button></div>
 <form id="lgf" novalidate><label id="lgNameRow" hidden>Name<input id="lgNm" type="text" autocomplete="name" placeholder="Your adventurer name"></label>
 <label>Email<input id="lgEm" type="email" autocomplete="email" placeholder="you@university.edu"></label>
 <label>Password<input id="lgPw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
-<p class="err" id="lgErr" role="alert"></p><button class="btn" id="lgSubmit" type="submit">Log in</button><p class="sep">or</p><button class="btn g" id="lgGuest" type="button">Continue as guest</button></form></div>
+<p class="err" id="lgErr" role="alert"></p><p class="msg" id="lgMsg" role="status"></p><button class="btn" id="lgSubmit" type="submit">Log in</button><p class="sep">or</p><button class="btn g" id="lgGuest" type="button">Continue as guest</button></form></div>
 <div class="card lg-card" id="lgIn" hidden><div class="lg-who"><div class="lg-av" id="lgAv">A</div><div><h3 id="lgName" style="font-size:22px;margin:0">Adventurer</h3><div class="mu2" id="lgMail"></div></div></div>
-<p class="mono2" id="lgBest"></p><div class="row3" style="margin-top:16px"><button class="btn" id="lgGo" type="button">Open dashboard</button><button class="btn g" id="lgOut" type="button">Log out</button></div></div>
+<p class="mono2" id="lgBest"></p><p class="mono2 lg-sync" id="lgSync" role="status" aria-live="polite"></p><div class="row3" style="margin-top:16px"><button class="btn" id="lgGo" type="button">Open dashboard</button><button class="btn g" id="lgOut" type="button">Log out</button></div></div>
 </div>
 </div></div></section>
 </div>
 
 <div class="pg" id="dashboard">
-<section class="sec"><div class="wrap"><h2>Your adventure</h2><p class="lead" style="margin-bottom:28px">Module progress resets when you reload. Log in to keep your boss record.</p>
+<section class="sec"><div class="wrap"><h2>Your adventure</h2><p class="lead" id="dbLead" style="margin-bottom:28px">Your checkpoints and XP are saved in this browser. Log in to keep your boss record.</p>
 <div class="cards">
 <div class="card"><div class="mono2">XP POINTS</div><div class="bigno" id="dxp">0</div><div class="pbar" style="margin-top:12px"><b id="dbar"></b></div><div class="mu2" id="dlv"></div></div>
 <div class="card"><div class="mono2">DAILY STREAK</div><div class="bigno">7 days</div><div class="flames" id="dfl"></div></div>
@@ -321,6 +321,8 @@
 <script src="js/router.js?v=4"></script>
 <script src="js/about.js?v=4"></script>
 <script src="js/community.js?v=3"></script>
-<script src="js/result.js?v=1"></script>
+<script src="js/config.js?v=1"></script>
+<script src="js/account.js?v=1"></script>
+<script src="js/result.js?v=3"></script>
 </body>
 </html>

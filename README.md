@@ -35,6 +35,19 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
+## Accounts and database
+
+Login, sign-up and saved progress (XP, checkpoints, boss record) use a hosted Supabase database.
+It is off until you paste two keys into `js/config.js`; until then the site keeps its browser-only
+demo login. Setup takes about 10 minutes: see [`supabase/SETUP.md`](supabase/SETUP.md).
+
+```
+supabase/schema.sql   # tables, sign-up trigger, security rules (run once in the SQL editor)
+supabase/SETUP.md     # step-by-step setup
+js/config.js          # your project URL + public key
+js/account.js         # sign up, log in, load and save progress
+```
+
 ## Publish on GitHub Pages
 
 1. Create a new repository on GitHub (for example `bytecrawler`).
