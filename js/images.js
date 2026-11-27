@@ -5,7 +5,7 @@ var IMG={
   ruins:"assets/images/ruins.jpg",
   arches:"assets/images/arches.png",
   mapA:"assets/images/mapA.jpg",
-  knight:"assets/images/knight.png",
+  knight:"assets/images/knight.png?v=2",
   mage:"assets/images/mage.png",
   ranger:"assets/images/ranger.png",
   dragon:"assets/images/dragon.png?v=2",
