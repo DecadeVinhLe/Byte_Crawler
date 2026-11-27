@@ -10,37 +10,21 @@ Learn Python like you learn a language: a pixel-dungeon learning path with a Pyt
 ## Folder structure
 
 ```
-index.html            all pages (Home, About, Learning path, Boss, Contact, Community, Dashboard, Login)
-css/                  one file per page or area: tokens, base, header, home, about*, course, boss, contact, community, dashboard, result ...
-js/
-  core.js, python.js  shared helpers, tiny Python interpreter
-  lessons-data.js     lesson text and quizzes
-  map.js, course.js   learning path map and lesson page
-  boss.js             boss quest: PHASES (tests, starter code, hints), attack button, result hooks
-  arena.js            3D boss arena: heroes, dragons, attack animations and effects
-  images.js           list of image paths used by the scripts
-  result.js           win / lose screens and the cutscene
-  account.js, config.js   login and saved progress (see "Accounts and database")
-  ...                 ui, router, dock, loader, snow, about, community, dashboard
-assets/images/        pictures, sprite sheets, team strips
-assets/video/         boss cutscene
-supabase/             database setup
+bytecrawler/
+├── index.html            # all pages (Home, About, Learning path, Boss, Contact, Community, Dashboard)
+├── css/
+│   └── style.css         # all styles
+├── js/
+│   ├── ui.js             # theme toggle, menus, contact form
+│   ├── app.js            # lessons, map, Python guide snake, boss fight, dashboard, tiny Python interpreter
+│   └── community.js      # Reddit-style community tab
+├── assets/
+│   ├── favicon.svg
+│   └── images/           # map, heroes, boss, backgrounds
+├── .nojekyll             # tells GitHub Pages to serve files as-is
+├── .gitignore
+└── README.md
 ```
-
-`js/app.js` and `css/style.css` are old all-in-one copies that `index.html` no longer loads. Edit the files above instead.
-
-## Characters
-
-**Boss-room heroes** (Knight, Wizard, Archer, Assassin). Each hero is a sprite sheet: `assets/images/sheet-knight.png`, `sheet-mage.png`, `sheet-ranger.png`, `sheet-rogue.png`. A sheet is 3 x 3 frames of 256 px that tell one attack, with the effect drawn into the frames. `knight.png`, `mage.png`, `ranger.png` and `rogue.png` are the small portraits in the hero picker.
-
-Their attacks live in `js/arena.js`:
-
-- `HERO` says where the character stands in a frame (`feet`, `top`, `cx`) so every hero is drawn at the same size. A sheet that faces left gets `flip:1`.
-- `ATK` is the timing of each attack: how long each of the 9 frames is shown (`d`), when a hit lands (`ti`), where a miss gives up (`tm`, `mf`), plus screen shake, flash and spark colours.
-- `EXT` lists the extra projectiles that carry the baked-in effect on to the dragon (wizard beam, two assassin blade waves, two extra archer arrows). They are crops of the same sheet.
-- To change a hero, replace its `sheet-*.png` with a new 3 x 3 sheet and adjust its `HERO` and `ATK` rows. The hero ids (`knight`, `mage`, `ranger`, `rogue`) are saved in progress, so keep them.
-
-**Team** (About and Contact pages): `assets/images/team-nhi.png`, `team-hung.png`, `team-vinh.png`, `team-quy.png` are 9-frame idle strips. The animation and the on-screen size of each frame are in `css/contact.css` (`.sprite`, `.sp-nhi` and so on). Reduced-motion users see the first frame.
 
 ## Run it locally
 
@@ -96,7 +80,7 @@ All file paths are relative, so the site works from a sub-path like this, from a
 
 ## Notes
 
-- Boss fight: Phase 1 is the Wyrm; beat it and the Storm Wyrm (Phase 2) rises and hurls lightning whenever you miss a round. Edit `PHASES` in `js/boss.js` to change the rounds.
+- Boss fight: Phase 1 is the Wyrm; beat it and the Storm Wyrm (Phase 2) rises and hurls lightning whenever you miss a round. Edit `TESTS1` / `TESTS2` in `js/app.js` to change the rounds.
 - If you open `index.html` by double-clicking it, some browsers block the 3D arena textures. The page shows a message and the fight still works; use the local server above to see the arena.
 - Fonts (Google Fonts) and the 3D boss arena (three.js from cdnjs) load from CDNs, so visitors need an internet connection. The boss fight still works without the 3D arena.
 - Progress and community posts live in the browser tab only and reset on reload.
@@ -114,3 +98,8 @@ Files: `js/result.js`, `css/result.css`, overlay markup at the end of `index.htm
 - Boss timer starts at the first Attack and stops on the win or the fall (`BCEnd.start / win / lose` in `js/boss.js`).
 - Design review without fighting the boss: open `index.html?preview=win` or `?preview=lose` (or run `BCEnd.preview("win")` in the console).
 - Esc closes the result screen and returns to the boss room.
+
+
+## Hero sprites
+
+Boss-arena heroes (Knight, Wizard, Archer, Assassin) use `assets/images/*-sheet.png`: 768x768, 3x3 cells of 256px, 9 attack frames with the effect drawn in. Idle = frame 0. Timing (`FD`, `ST`, `TI`) and per-class feet/centre offsets (`CS`) are in `js/arena.js`. Team avatars are `assets/images/avatar-*.png`. Run `node tests/sheets.test.js` after changing a sheet.

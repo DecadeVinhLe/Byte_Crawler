@@ -10,18 +10,10 @@
 
 /* Team cards: avatars, role badge, names (VT323 supports Vietnamese letters) */
 .team .tm2{padding:22px 16px 24px}
-.tm2 .av{width:132px;height:144px;margin:0 auto 14px;border:3px solid var(--line);background:var(--card);display:grid;place-items:end center;overflow:hidden}
+.tm2 .av{width:96px;height:96px;margin:0 auto 14px;border:3px solid var(--line);background:var(--card)}
+.tm2 .av img{border:0}
 .tm2 h3{font:400 21px/1.25 var(--mono);text-transform:none;letter-spacing:.02em;margin:8px 0 4px}
 .tm2 p{font:400 18px/1.4 var(--mono);color:var(--mu)}
 .rl{display:inline-block;font:400 14px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;color:#fff;background:var(--blue)}
 .rl.lead-r{background:var(--gold);color:var(--ink)}
 .team + .two{margin-top:72px!important}
-
-/* Team characters: 9-frame idle strips (assets/images/team-*.png). --sw/--sh = one frame's size on screen. */
-.sprite{display:block;width:var(--sw);height:var(--sh);margin-bottom:6px;background-repeat:no-repeat;background-size:calc(var(--sw)*9) var(--sh);animation:teamIdle 1.1s steps(9) infinite}
-@keyframes teamIdle{to{background-position-x:calc(var(--sw)*-9)}}
-@media(prefers-reduced-motion:reduce){.sprite{animation:none}}
-.sp-nhi{--sw:88px;--sh:115px;background-image:url(../assets/images/team-nhi.png)}
-.sp-hung{--sw:73px;--sh:126px;background-image:url(../assets/images/team-hung.png)}
-.sp-vinh{--sw:80px;--sh:125px;background-image:url(../assets/images/team-vinh.png)}
-.sp-quy{--sw:59px;--sh:117px;background-image:url(../assets/images/team-quy.png)}

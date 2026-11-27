@@ -60,6 +60,3 @@
 .cls button{min-width:0}
 @media(max-width:400px){.cls{gap:6px}.cls button{padding:6px 2px;font-size:15px}.cls small{display:none}.cls img{max-width:100%}}
 #sb{display:block;background:transparent;border:0;color:inherit;font:inherit;line-height:1.6;min-height:200px;padding:16px;resize:vertical;outline:0;margin:0}
-
-/* Hero picker: portraits come from the character sprite sheets (stored at 2x, shown at 56px) */
-.cls button img{height:56px;image-rendering:auto}
