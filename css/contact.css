@@ -10,10 +10,21 @@
 
 /* Team cards: avatars, role badge, names (VT323 supports Vietnamese letters) */
 .team .tm2{padding:22px 16px 24px}
-.tm2 .av{width:96px;height:96px;margin:0 auto 14px;border:3px solid var(--line);background:var(--card)}
-.tm2 .av img{border:0}
 .tm2 h3{font:400 21px/1.25 var(--mono);text-transform:none;letter-spacing:.02em;margin:8px 0 4px}
 .tm2 p{font:400 18px/1.4 var(--mono);color:var(--mu)}
 .rl{display:inline-block;font:400 14px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;color:#fff;background:var(--blue)}
 .rl.lead-r{background:var(--gold);color:var(--ink)}
 .team + .two{margin-top:72px!important}
+
+/* Team portraits: head-and-shoulders window onto the character pack's idle loop (assets/images/team-*.png).
+   Each strip is 9 frames of 208x208 (the pack art cut at the chest and enlarged to fill the frame), so the four faces share one scale. */
+.tm2 .av{position:relative;width:100%;max-width:208px;height:auto;aspect-ratio:1;margin:0 auto 14px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+ border:3px solid var(--line);background:radial-gradient(90% 70% at 50% 100%,#6a62b8,rgba(106,98,184,0) 70%),linear-gradient(#262a63,#363b86)}
+.sprite{display:block;flex:none;width:var(--sw);height:var(--sh);background-repeat:no-repeat;background-size:calc(var(--sw)*9) var(--sh);image-rendering:pixelated;animation:teamIdle 1.15s steps(9) infinite}
+@keyframes teamIdle{to{background-position-x:calc(var(--sw)*-9)}}
+@media(prefers-reduced-motion:reduce){.sprite{animation:none}}
+.sp-nhi,.sp-hung,.sp-vinh,.sp-quy{--sw:208px;--sh:208px}
+.sp-nhi{background-image:url(../assets/images/team-nhi.png?v=4)}
+.sp-hung{background-image:url(../assets/images/team-hung.png?v=4)}
+.sp-vinh{background-image:url(../assets/images/team-vinh.png?v=4)}
+.sp-quy{background-image:url(../assets/images/team-quy.png?v=5)}
